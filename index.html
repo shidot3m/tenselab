@@ -1,0 +1,2513 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TenseLab — Тренажёр 12 времён английского языка</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          boxShadow: {
+            soft: '0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04)',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    html.dark body {
+      background-color: #0b1120;
+      color: #f1f5f9;
+    }
+    html.dark ::-webkit-scrollbar-thumb { background: #334155; }
+    html.dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    html.dark .shadow-soft {
+      box-shadow: 0 8px 28px -4px rgba(2, 6, 23, 0.55), 0 2px 8px -2px rgba(2, 6, 23, 0.4);
+    }
+    /* Dark theme surface & typography refinement */
+    html.dark header {
+      background-color: rgba(15, 23, 42, 0.88) !important;
+      border-color: rgba(51, 65, 85, 0.7) !important;
+    }
+    html.dark .bg-white { background-color: #111a2e !important; }
+    html.dark .bg-white\/90 { background-color: rgba(17, 26, 46, 0.92) !important; }
+    html.dark .bg-white\/80 { background-color: rgba(17, 26, 46, 0.85) !important; }
+    html.dark .bg-slate-50,
+    html.dark .bg-slate-50\/80,
+    html.dark .bg-slate-50\/50,
+    html.dark .bg-slate-50\/40 { background-color: #0f172a !important; }
+    html.dark .bg-slate-100,
+    html.dark .bg-slate-100\/90 { background-color: #1e293b !important; }
+    html.dark .bg-slate-200\/80 { background-color: #334155 !important; }
+    html.dark .border-slate-100 { border-color: rgba(51, 65, 85, 0.45) !important; }
+    html.dark .border-slate-200,
+    html.dark .border-slate-200\/80,
+    html.dark .border-slate-200\/70 { border-color: rgba(51, 65, 85, 0.8) !important; }
+    html.dark .border-slate-300 { border-color: #475569 !important; }
+    html.dark .text-slate-900 { color: #f8fafc !important; }
+    html.dark .text-slate-800 { color: #e2e8f0 !important; }
+    html.dark .text-slate-700 { color: #cbd5e1 !important; }
+    html.dark .text-slate-600 { color: #94a3b8 !important; }
+    html.dark .text-slate-500 { color: #94a3b8 !important; }
+    html.dark .text-slate-400 { color: #64748b !important; }
+
+    /* Dark theme tinted accents */
+    html.dark .bg-indigo-50,
+    html.dark .bg-indigo-50\/70,
+    html.dark .bg-indigo-50\/30 { background-color: rgba(79, 70, 229, 0.16) !important; }
+    html.dark .border-indigo-100,
+    html.dark .border-indigo-200 { border-color: rgba(99, 102, 241, 0.35) !important; }
+    html.dark .text-indigo-700,
+    html.dark .text-indigo-600 { color: #a5b4fc !important; }
+    html.dark .hover\:bg-indigo-50:hover { background-color: rgba(79, 70, 229, 0.22) !important; }
+
+    html.dark .bg-emerald-50,
+    html.dark .bg-emerald-50\/70,
+    html.dark .bg-emerald-50\/30,
+    html.dark .bg-emerald-100 { background-color: rgba(16, 185, 129, 0.16) !important; }
+    html.dark .border-emerald-100,
+    html.dark .border-emerald-200,
+    html.dark .border-emerald-200\/80 { border-color: rgba(16, 185, 129, 0.35) !important; }
+    html.dark .text-emerald-900,
+    html.dark .text-emerald-800,
+    html.dark .text-emerald-700,
+    html.dark .text-emerald-600 { color: #6ee7b7 !important; }
+
+    html.dark .bg-amber-50,
+    html.dark .bg-amber-50\/80,
+    html.dark .bg-amber-50\/60 { background-color: rgba(245, 158, 11, 0.15) !important; }
+    html.dark .border-amber-200,
+    html.dark .border-amber-200\/80 { border-color: rgba(245, 158, 11, 0.35) !important; }
+    html.dark .text-amber-950,
+    html.dark .text-amber-900,
+    html.dark .text-amber-700,
+    html.dark .text-amber-600 { color: #fcd34d !important; }
+
+    html.dark .bg-rose-50,
+    html.dark .bg-rose-50\/70,
+    html.dark .bg-rose-100 { background-color: rgba(244, 63, 94, 0.16) !important; }
+    html.dark .border-rose-100,
+    html.dark .border-rose-200,
+    html.dark .border-rose-200\/80 { border-color: rgba(244, 63, 94, 0.38) !important; }
+    html.dark .text-rose-900,
+    html.dark .text-rose-700,
+    html.dark .text-rose-600 { color: #fda4af !important; }
+
+    html.dark .bg-sky-50,
+    html.dark .bg-sky-50\/30 { background-color: rgba(14, 165, 233, 0.15) !important; }
+    html.dark .border-sky-100,
+    html.dark .border-sky-200,
+    html.dark .border-sky-200\/80 { border-color: rgba(14, 165, 233, 0.35) !important; }
+    html.dark .text-sky-700 { color: #7dd3fc !important; }
+
+    /* Active pill & button contrast in dark mode */
+    html.dark .preset-btn.bg-slate-900 {
+      background-color: #6366f1 !important;
+      border-color: #6366f1 !important;
+      color: #ffffff !important;
+    }
+    html.dark #btn-next-question {
+      background-color: #6366f1 !important;
+      color: #ffffff !important;
+    }
+    html.dark #btn-next-question:hover {
+      background-color: #4f46e5 !important;
+    }
+    html.dark .nav-tab.bg-white,
+    html.dark .filter-form-btn.bg-white,
+    html.dark .filter-subj-btn.bg-white,
+    html.dark .filter-mode-btn.bg-white {
+      background-color: #334155 !important;
+      color: #f8fafc !important;
+    }
+    html.dark #type-input {
+      background-color: #0f172a !important;
+      color: #f8fafc !important;
+      border-color: #334155 !important;
+    }
+    html.dark #type-input:focus {
+      border-color: #818cf8 !important;
+    }
+    html.dark #toast {
+      background-color: #e2e8f0 !important;
+      color: #0f172a !important;
+    }
+    html.dark .option-btn:hover:not(:disabled) {
+      border-color: #818cf8 !important;
+      background-color: rgba(99, 102, 241, 0.14) !important;
+    }
+    html.dark svg line[stroke="#cbd5e1"] { stroke: #475569; }
+    html.dark svg text[fill="#475569"] { fill: #e2e8f0; }
+    html.dark svg circle[fill="#0f172a"] { fill: #f8fafc; }
+    .fade-in {
+      animation: fadeIn 0.22s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .option-btn {
+      transition: all 0.15s ease;
+    }
+    .option-btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Top Navigation -->
+  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-slate-200/80">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 text-white flex items-center justify-center shadow-sm shrink-0">
+          <i data-lucide="sparkles" class="w-5 h-5"></i>
+        </div>
+        <div class="truncate">
+          <span class="font-extrabold text-slate-900 tracking-tight text-lg">TenseLab</span>
+          <span class="hidden sm:inline-block ml-2 text-xs font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">12 времён EN</span>
+        </div>
+      </div>
+
+      <!-- Nav Tabs -->
+      <nav class="flex items-center bg-slate-100/90 p-1 rounded-xl gap-1" aria-label="Основная навигация">
+        <button id="tab-practice" data-tab="practice" class="nav-tab px-3 sm:px-4 py-1.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-1.5 bg-white text-indigo-700 shadow-sm">
+          <i data-lucide="zap" class="w-4 h-4"></i>
+          <span>Тренажёр</span>
+        </button>
+        <button id="tab-theory" data-tab="theory" class="nav-tab px-3 sm:px-4 py-1.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
+          <i data-lucide="book-open" class="w-4 h-4"></i>
+          <span>Теория</span>
+        </button>
+        <button id="tab-progress" data-tab="progress" class="nav-tab px-3 sm:px-4 py-1.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-1.5 text-slate-600 hover:text-slate-900 relative">
+          <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Прогресс</span>
+          <span id="nav-mistakes-badge" class="hidden ml-0.5 px-1.5 py-0.2 text-[11px] font-bold bg-rose-500 text-white rounded-full">0</span>
+        </button>
+      </nav>
+
+      <!-- Theme Toggle -->
+      <button id="btn-toggle-theme" type="button" class="w-9 h-9 rounded-xl border border-slate-200 bg-slate-100/90 text-slate-600 hover:text-indigo-600 flex items-center justify-center transition-all shrink-0" title="Переключить тему" aria-label="Переключить светлую и тёмную тему">
+        <i id="theme-icon-sun" data-lucide="sun" class="w-4 h-4"></i>
+        <i id="theme-icon-moon" data-lucide="moon" class="w-4 h-4 hidden"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-5 sm:py-7">
+
+    <!-- ==================== VIEW 1: PRACTICE (ТРЕНAЖЁР) ==================== -->
+    <section id="view-practice" class="space-y-5 fade-in">
+
+      <!-- Mode & Filter Panel -->
+      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-soft p-4 sm:p-5 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <h1 class="text-base sm:text-lg font-bold text-slate-900">Режим тренировки</h1>
+            <span id="active-scope-badge" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100">Все 12 времён</span>
+          </div>
+          <button id="btn-toggle-custom-grid" class="text-xs font-semibold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 px-2.5 py-1.5 rounded-lg hover:bg-indigo-50 transition-colors">
+            <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i>
+            <span id="custom-grid-toggle-label">Выбрать вручную</span>
+          </button>
+        </div>
+
+        <!-- Quick Presets -->
+        <div id="preset-buttons" class="flex flex-wrap gap-2">
+          <button data-preset="all" class="preset-btn px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all">Все 12 вразнобой</button>
+          <button data-preset="present" class="preset-btn px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all">Только Present (4)</button>
+          <button data-preset="past" class="preset-btn px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all">Только Past (4)</button>
+          <button data-preset="future" class="preset-btn px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all">Только Future (4)</button>
+          <button data-preset="simple" class="preset-btn px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all">Все Simple (3)</button>
+          <button data-preset="continuous" class="preset-btn px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all">Все Continuous (3)</button>
+          <button data-preset="perfect" class="preset-btn px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all">Все Perfect (3)</button>
+          <button data-preset="perfect_cont" class="preset-btn px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all">Perfect Cont. (3)</button>
+          <button id="btn-preset-mistakes" data-preset="mistakes" class="preset-btn hidden px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all flex items-center gap-1.5">
+            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+            <span>Ошибки (<span id="preset-mistakes-count">0</span>)</span>
+          </button>
+        </div>
+
+        <!-- Expandable Custom 12-Tense Picker -->
+        <div id="custom-tense-picker" class="hidden pt-2 border-t border-slate-100 space-y-2.5 fade-in">
+          <div class="flex items-center justify-between text-xs text-slate-500">
+            <span>Нажмите на времена, чтобы включить или выключить их (можно выбрать даже одно):</span>
+            <div class="flex gap-2">
+              <button id="btn-select-all-tenses" class="font-semibold text-indigo-600 hover:underline">Выбрать все</button>
+              <span>·</span>
+              <button id="btn-select-one-hint" class="font-semibold text-slate-600 hover:underline">Только Present Simple</button>
+            </div>
+          </div>
+          <div id="custom-tense-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-2"></div>
+        </div>
+
+        <!-- Secondary Filters: Form (+ / - / ?), Subject, Input Mode -->
+        <div class="pt-3 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label class="block text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Форма предложения</label>
+            <div id="filter-form-group" class="grid grid-cols-4 gap-1 bg-slate-100 p-1 rounded-xl">
+              <button data-form="all" class="filter-form-btn py-1 text-xs font-semibold rounded-lg transition-all">Все</button>
+              <button data-form="aff" class="filter-form-btn py-1 text-xs font-semibold rounded-lg transition-all">+</button>
+              <button data-form="neg" class="filter-form-btn py-1 text-xs font-semibold rounded-lg transition-all">−</button>
+              <button data-form="q" class="filter-form-btn py-1 text-xs font-semibold rounded-lg transition-all">?</button>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Лицо / Подлежащее</label>
+            <div id="filter-subj-group" class="grid grid-cols-3 gap-1 bg-slate-100 p-1 rounded-xl">
+              <button data-subj="all" class="filter-subj-btn py-1 text-xs font-semibold rounded-lg transition-all">Все</button>
+              <button data-subj="3s" class="filter-subj-btn py-1 text-xs font-semibold rounded-lg transition-all">He/She/It</button>
+              <button data-subj="other" class="filter-subj-btn py-1 text-xs font-semibold rounded-lg transition-all">I/You/They</button>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Формат ответа</label>
+            <div id="filter-mode-group" class="grid grid-cols-3 gap-1 bg-slate-100 p-1 rounded-xl">
+              <button data-mode="mc" class="filter-mode-btn py-1 text-xs font-semibold rounded-lg transition-all">Тест</button>
+              <button data-mode="type" class="filter-mode-btn py-1 text-xs font-semibold rounded-lg transition-all">Ввод</button>
+              <button data-mode="mix" class="filter-mode-btn py-1 text-xs font-semibold rounded-lg transition-all">Микс</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Session Stats Bar -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="bg-white rounded-xl border border-slate-200/80 px-3.5 py-2.5 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+            <i data-lucide="flame" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <div class="text-[11px] text-slate-500 font-medium">Серия</div>
+            <div id="stat-streak" class="text-base font-bold text-slate-900">0</div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200/80 px-3.5 py-2.5 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+            <i data-lucide="target" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <div class="text-[11px] text-slate-500 font-medium">Точность</div>
+            <div id="stat-accuracy" class="text-base font-bold text-slate-900">—</div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200/80 px-3.5 py-2.5 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+            <i data-lucide="layers" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <div class="text-[11px] text-slate-500 font-medium">Уникальных</div>
+            <div id="stat-unique" class="text-base font-bold text-slate-900">0</div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200/80 px-3.5 py-2.5 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center shrink-0">
+            <i data-lucide="alert-circle" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <div class="text-[11px] text-slate-500 font-medium">На разборе</div>
+            <div id="stat-mistakes-count" class="text-base font-bold text-slate-900">0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Question Card -->
+      <div id="quiz-card" class="bg-white rounded-2xl border border-slate-200/80 shadow-soft overflow-hidden">
+        <!-- Card Header -->
+        <div class="px-5 py-3.5 bg-slate-50/80 border-b border-slate-100 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex flex-wrap items-center gap-2">
+            <span id="q-form-badge" class="text-xs font-bold px-2.5 py-1 rounded-lg bg-slate-200/80 text-slate-700">Утверждение (+)</span>
+            <span id="q-tense-hint-badge" class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-indigo-50 text-indigo-700">Определите время по контексту</span>
+            <span id="q-review-badge" class="hidden text-xs font-bold px-2.5 py-1 rounded-lg bg-rose-100 text-rose-700">Повтор ошибки</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="btn-show-hint" class="text-xs font-semibold text-slate-500 hover:text-indigo-600 flex items-center gap-1 px-2 py-1 rounded-lg hover:bg-white transition-colors">
+              <i data-lucide="lightbulb" class="w-3.5 h-3.5"></i>
+              <span>Подсказка</span>
+            </button>
+            <button id="btn-skip-question" class="text-xs font-semibold text-slate-400 hover:text-slate-700 flex items-center gap-1 px-2 py-1 rounded-lg hover:bg-white transition-colors" title="Пропустить и загрузить новый вопрос">
+              <i data-lucide="shuffle" class="w-3.5 h-3.5"></i>
+              <span>Другой</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card Body -->
+        <div class="p-5 sm:p-7 space-y-5">
+          <!-- Translation / Context prompt -->
+          <div class="space-y-2">
+            <div id="q-ru-context" class="text-sm text-slate-500 font-medium"></div>
+            <div id="q-sentence" class="text-xl sm:text-2xl font-bold text-slate-900 leading-relaxed tracking-tight"></div>
+            <div class="flex flex-wrap items-center gap-2 pt-1">
+              <span class="text-xs text-slate-400 font-medium">Используйте:</span>
+              <span id="q-cue" class="inline-flex items-center px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-sm font-semibold font-mono"></span>
+            </div>
+          </div>
+
+          <!-- Optional Hint Box -->
+          <div id="q-hint-box" class="hidden rounded-xl bg-amber-50/80 border border-amber-200/80 px-4 py-3 text-sm text-amber-900 flex items-start gap-2.5 fade-in">
+            <i data-lucide="lightbulb" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+            <div id="q-hint-text"></div>
+          </div>
+
+          <!-- Multiple Choice Container -->
+          <div id="mc-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1"></div>
+
+          <!-- Typing Container -->
+          <div id="type-container" class="hidden space-y-3 pt-1">
+            <div class="flex flex-col sm:flex-row gap-2.5">
+              <input id="type-input" type="text" autocomplete="off" spellcheck="false" placeholder="Введите пропущенную форму..." class="flex-1 px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none text-base font-semibold text-slate-900 transition-all" />
+              <button id="btn-submit-type" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-sm transition-all flex items-center justify-center gap-2 shrink-0">
+                <span>Проверить</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+            <p class="text-xs text-slate-400">Можно писать как полную форму (does not work), так и сокращённую (doesn't work). Нажмите Enter для проверки.</p>
+          </div>
+
+          <!-- Feedback & Detailed Rule Explanation -->
+          <div id="feedback-box" class="hidden rounded-2xl border p-4 sm:p-5 space-y-3.5 fade-in">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-start gap-3">
+                <div id="fb-icon-wrap" class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5"></div>
+                <div>
+                  <div id="fb-title" class="font-bold text-base"></div>
+                  <div id="fb-full-sentence" class="text-sm font-semibold mt-0.5"></div>
+                </div>
+              </div>
+              <button id="btn-open-tense-theory" class="text-xs font-semibold px-2.5 py-1.5 rounded-lg border bg-white/80 hover:bg-white transition-colors shrink-0 flex items-center gap-1">
+                <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                <span class="hidden sm:inline">Правило</span>
+              </button>
+            </div>
+
+            <!-- Why mistake happened (shown on wrong answer) -->
+            <div id="fb-diagnosis-wrap" class="hidden rounded-xl bg-white/90 border border-rose-200/80 p-3.5 text-sm text-slate-800 space-y-1">
+              <div class="text-xs font-bold uppercase tracking-wider text-rose-600 flex items-center gap-1.5">
+                <i data-lucide="search-check" class="w-3.5 h-3.5"></i>
+                <span>В чём ошибка</span>
+              </div>
+              <p id="fb-diagnosis-text" class="leading-relaxed"></p>
+            </div>
+
+            <!-- Rule & Formula Breakdown -->
+            <div class="rounded-xl bg-white/90 border border-slate-200/70 p-3.5 text-sm space-y-2">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span id="fb-tense-name" class="font-bold text-slate-900"></span>
+                <span id="fb-formula-pill" class="font-mono text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800"></span>
+              </div>
+              <p id="fb-rule-text" class="text-slate-600 leading-relaxed"></p>
+              <div id="fb-marker-text" class="text-xs font-medium text-indigo-700 bg-indigo-50/70 px-3 py-1.5 rounded-lg inline-block"></div>
+            </div>
+
+            <div class="flex items-center justify-between pt-1">
+              <span class="text-xs text-slate-500 hidden sm:inline">Нажмите <kbd class="px-1.5 py-0.5 bg-white border border-slate-300 rounded text-[11px] font-mono">Enter</kbd> для следующего вопроса</span>
+              <button id="btn-next-question" class="ml-auto px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm transition-all flex items-center gap-2 shadow-sm">
+                <span>Следующий вопрос</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 2: THEORY (ЛЁГКАЯ ТЕОРИЯ) ==================== -->
+    <section id="view-theory" class="hidden space-y-5 fade-in">
+      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-soft p-4 sm:p-6 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-lg sm:text-xl font-bold text-slate-900">Шпаргалка по 12 временам</h2>
+            <p class="text-sm text-slate-500">Нажмите на любое время — откроется простая суть, формулы для he/she/it и they, маркеры и ловушки.</p>
+          </div>
+          <div class="flex items-center gap-2 text-xs font-semibold">
+            <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">Present</span>
+            <span class="px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Past</span>
+            <span class="px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">Future</span>
+          </div>
+        </div>
+
+        <!-- 3x4 Matrix -->
+        <div class="overflow-x-auto -mx-2 px-2">
+          <div id="theory-matrix" class="grid grid-cols-1 sm:grid-cols-4 gap-2.5 min-w-0"></div>
+        </div>
+      </div>
+
+      <!-- Selected Tense Detail Card -->
+      <div id="theory-detail-card" class="bg-white rounded-2xl border border-slate-200/80 shadow-soft p-5 sm:p-7 space-y-6 fade-in"></div>
+    </section>
+
+    <!-- ==================== VIEW 3: PROGRESS & MISTAKES ==================== -->
+    <section id="view-progress" class="hidden space-y-5 fade-in">
+      <!-- Overview KPIs -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-4 shadow-soft">
+          <div class="text-xs font-medium text-slate-500">Всего ответов</div>
+          <div id="prog-total" class="text-2xl font-extrabold text-slate-900 mt-1">0</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-4 shadow-soft">
+          <div class="text-xs font-medium text-slate-500">Общая точность</div>
+          <div id="prog-accuracy" class="text-2xl font-extrabold text-emerald-600 mt-1">—</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-4 shadow-soft">
+          <div class="text-xs font-medium text-slate-500">Лучшая серия</div>
+          <div id="prog-best-streak" class="text-2xl font-extrabold text-amber-600 mt-1">0</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-4 shadow-soft">
+          <div class="text-xs font-medium text-slate-500">Ошибок в очереди</div>
+          <div id="prog-mistakes-cnt" class="text-2xl font-extrabold text-rose-600 mt-1">0</div>
+        </div>
+      </div>
+
+      <!-- Mastery by Tense -->
+      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-soft p-5 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-base sm:text-lg font-bold text-slate-900">Освоение по каждому времени</h2>
+            <p class="text-xs text-slate-500">Нажмите на любое время, чтобы сразу перейти к его тренировке.</p>
+          </div>
+          <button id="btn-open-reset-modal" class="text-xs font-semibold text-slate-400 hover:text-rose-600 px-2.5 py-1.5 rounded-lg hover:bg-rose-50 transition-colors flex items-center gap-1">
+            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            <span>Сбросить прогресс</span>
+          </button>
+        </div>
+        <div id="prog-tense-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+      </div>
+
+      <!-- Mistakes Queue -->
+      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-soft p-5 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-base sm:text-lg font-bold text-slate-900">Журнал ошибок</h2>
+            <p class="text-xs text-slate-500">Ошибки сохраняются здесь, пока вы не ответите на них правильно в режиме «Ошибки».</p>
+          </div>
+          <button id="btn-practice-mistakes" class="hidden px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs sm:text-sm font-semibold transition-all flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+            <span>Отработать ошибки</span>
+          </button>
+        </div>
+        <div id="mistakes-list" class="space-y-2.5"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Reset Confirmation Modal -->
+  <div id="reset-modal" class="hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-xl space-y-4 fade-in">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center shrink-0">
+          <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="font-bold text-slate-900">Сбросить весь прогресс?</h3>
+          <p class="text-xs text-slate-500 mt-0.5">Статистика, серия, пройденные вопросы и список ошибок будут очищены.</p>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2 pt-2">
+        <button id="btn-cancel-reset" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-colors">Отмена</button>
+        <button id="btn-confirm-reset" class="px-4 py-2 rounded-xl text-sm font-semibold bg-rose-600 hover:bg-rose-700 text-white transition-colors">Да, сбросить</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white text-sm font-medium px-4 py-2.5 rounded-xl shadow-lg fade-in"></div>
+
+<script>
+(() => {
+  'use strict';
+
+  /* ============================================================================
+     1. METADATA FOR ALL 12 ENGLISH TENSES (LIGHT THEORY + FORMULAS + TIMELINES)
+     ============================================================================ */
+  const TENSES = [
+    {
+      id: 'pres_simple',
+      name: 'Present Simple',
+      group: 'present',
+      aspect: 'simple',
+      shortRu: 'Регулярные действия, факты, привычки',
+      essence: 'То, что происходит вообще, регулярно, по расписанию или является фактом.',
+      markers: ['every day', 'usually', 'always', 'often', 'sometimes', 'on weekends', 'rarely'],
+      formulas: {
+        aff: [
+          { subj: 'I / You / We / They', form: 'V1 (work, go)' },
+          { subj: 'He / She / It', form: 'V1 + s / es (works, goes)' }
+        ],
+        neg: [
+          { subj: 'I / You / We / They', form: "don't + V1" },
+          { subj: 'He / She / It', form: "doesn't + V1 (без -s!)" }
+        ],
+        q: [
+          { subj: 'I / You / We / They', form: 'Do + S + V1?' },
+          { subj: 'He / She / It', form: 'Does + S + V1 (без -s!)?' }
+        ]
+      },
+      examples: {
+        aff: { en: 'She works from home on Fridays.', ru: 'Она работает из дома по пятницам.' },
+        neg: { en: "He doesn't drink coffee in the evening.", ru: 'Он не пьёт кофе вечером.' },
+        q:   { en: 'Do they play tennis every weekend?', ru: 'Они играют в теннис каждые выходные?' }
+      },
+      traps: [
+        'После does / doesn’t окончание -s у основного глагола исчезает: Does he work? (не works!).',
+        'Глаголы на -o, -ch, -sh, -ss, -x получают -es (goes, watches), а согласная + y → -ies (studies).'
+      ],
+      timelineType: 'repeat_now'
+    },
+    {
+      id: 'pres_cont',
+      name: 'Present Continuous',
+      group: 'present',
+      aspect: 'continuous',
+      shortRu: 'Действие прямо сейчас или временно',
+      essence: 'Процесс, который идёт прямо в момент речи или в текущий временный период.',
+      markers: ['now', 'right now', 'at the moment', 'Look!', 'Listen!', 'currently'],
+      formulas: {
+        aff: [
+          { subj: 'I', form: 'am + V-ing' },
+          { subj: 'He / She / It', form: 'is + V-ing' },
+          { subj: 'You / We / They', form: 'are + V-ing' }
+        ],
+        neg: [
+          { subj: 'I', form: "am not ('m not) + V-ing" },
+          { subj: 'He / She / It', form: "isn't (is not) + V-ing" },
+          { subj: 'You / We / They', form: "aren't (are not) + V-ing" }
+        ],
+        q: [
+          { subj: 'I / He / They', form: 'Am / Is / Are + S + V-ing?' }
+        ]
+      },
+      examples: {
+        aff: { en: 'Look! She is cooking pasta right now.', ru: 'Смотри! Она прямо сейчас готовит пасту.' },
+        neg: { en: "They aren't watching TV at the moment.", ru: 'Они сейчас не смотрят телевизор.' },
+        q:   { en: 'Is he working on the report now?', ru: 'Он сейчас работает над отчётом?' }
+      },
+      traps: [
+        'Не забывайте глагол be (am / is / are) перед V-ing: He is running, а не He running.',
+        'В вопросах и отрицаниях do/does не используются — всё делает am/is/are.'
+      ],
+      timelineType: 'dot_now_wave'
+    },
+    {
+      id: 'pres_perf',
+      name: 'Present Perfect',
+      group: 'present',
+      aspect: 'perfect',
+      shortRu: 'Результат к настоящему моменту, опыт',
+      essence: 'Действие уже случилось (или ещё нет), и нам важен результат сейчас, а не точное время в прошлом.',
+      markers: ['already', 'yet', 'just', 'ever', 'never', 'recently', 'so far', 'today'],
+      formulas: {
+        aff: [
+          { subj: 'I / You / We / They', form: 'have + V3' },
+          { subj: 'He / She / It', form: 'has + V3' }
+        ],
+        neg: [
+          { subj: 'I / You / We / They', form: "haven't + V3" },
+          { subj: 'He / She / It', form: "hasn't + V3" }
+        ],
+        q: [
+          { subj: 'I / You / We / They', form: 'Have + S + V3?' },
+          { subj: 'He / She / It', form: 'Has + S + V3?' }
+        ]
+      },
+      examples: {
+        aff: { en: 'She has finished the presentation today.', ru: 'Она сегодня закончила презентацию (готово!).' },
+        neg: { en: "They haven't bought the tickets yet.", ru: 'Они ещё не купили билеты.' },
+        q:   { en: 'Have you written the email yet?', ru: 'Ты уже написал письмо?' }
+      },
+      traps: [
+        'Нужна 3-я форма глагола (V3: written, gone, eaten), а не 2-я (wrote, went, ate)!',
+        'Если в предложении есть точное прошлое время (yesterday, last week, in 2020), используйте Past Simple, а не Present Perfect.'
+      ],
+      timelineType: 'past_to_now_result'
+    },
+    {
+      id: 'pres_perf_cont',
+      name: 'Present Perfect Continuous',
+      group: 'present',
+      aspect: 'perfect_cont',
+      shortRu: 'Процесс начался в прошлом и ещё идёт',
+      essence: 'Подчёркивает длительность процесса: действие началось раньше и продолжается до сих пор.',
+      markers: ['for two hours', 'since morning', 'since 9 a.m.', 'all morning', 'how long'],
+      formulas: {
+        aff: [
+          { subj: 'I / You / We / They', form: 'have been + V-ing' },
+          { subj: 'He / She / It', form: 'has been + V-ing' }
+        ],
+        neg: [
+          { subj: 'I / You / We / They', form: "haven't been + V-ing" },
+          { subj: 'He / She / It', form: "hasn't been + V-ing" }
+        ],
+        q: [
+          { subj: 'I / You / We / They', form: 'Have + S + been + V-ing?' },
+          { subj: 'He / She / It', form: 'Has + S + been + V-ing?' }
+        ]
+      },
+      examples: {
+        aff: { en: 'He has been studying English for two hours.', ru: 'Он учит английский уже два часа.' },
+        neg: { en: "We haven't been waiting since morning.", ru: 'Мы не ждём с самого утра.' },
+        q:   { en: 'Has she been working here since 2022?', ru: 'Она работает здесь с 2022 года?' }
+      },
+      traps: [
+        'Не теряйте been! Формула всегда из трёх частей: have/has + been + V-ing.',
+        'for + длительность (for 3 hours), since + точка старта (since 9 a.m. / since Monday).'
+      ],
+      timelineType: 'past_to_now_wave'
+    },
+    {
+      id: 'past_simple',
+      name: 'Past Simple',
+      group: 'past',
+      aspect: 'simple',
+      shortRu: 'Завершённое действие в прошлом',
+      essence: 'Факт или событие, которое произошло и закончилось в конкретный момент в прошлом.',
+      markers: ['yesterday', 'last week', 'two days ago', 'in 2021', 'last night'],
+      formulas: {
+        aff: [
+          { subj: 'Все лица (I, he, they...)', form: 'V2 (worked / went)' }
+        ],
+        neg: [
+          { subj: 'Все лица', form: "didn't + V1 (начальная!)" }
+        ],
+        q: [
+          { subj: 'Все лица', form: 'Did + S + V1 (начальная!)?' }
+        ]
+      },
+      examples: {
+        aff: { en: 'They bought a new laptop yesterday.', ru: 'Они купили новый ноутбук вчера.' },
+        neg: { en: "She didn't go to the office last week.", ru: 'Она не ходила в офис на прошлой неделе.' },
+        q:   { en: 'Did he finish the report yesterday?', ru: 'Он закончил отчёт вчера?' }
+      },
+      traps: [
+        'Главная ошибка: после did / didn’t глагол возвращается в V1! Did you go? (НЕ Did you went?).',
+        'Утверждение одинаково для всех лиц — никакого -s у he/she/it в прошедшем нет.'
+      ],
+      timelineType: 'dot_past'
+    },
+    {
+      id: 'past_cont',
+      name: 'Past Continuous',
+      group: 'past',
+      aspect: 'continuous',
+      shortRu: 'Процесс в конкретный момент прошлого',
+      essence: 'Действие было в разгаре в определённый момент прошлого или служило фоном для другого события.',
+      markers: ['at 7 p.m. yesterday', 'when I called', 'while', 'at that moment yesterday'],
+      formulas: {
+        aff: [
+          { subj: 'I / He / She / It', form: 'was + V-ing' },
+          { subj: 'You / We / They', form: 'were + V-ing' }
+        ],
+        neg: [
+          { subj: 'I / He / She / It', form: "wasn't + V-ing" },
+          { subj: 'You / We / They', form: "weren't + V-ing" }
+        ],
+        q: [
+          { subj: 'I / He / She / It', form: 'Was + S + V-ing?' },
+          { subj: 'You / We / They', form: 'Were + S + V-ing?' }
+        ]
+      },
+      examples: {
+        aff: { en: 'At 8 p.m. yesterday, he was cooking dinner.', ru: 'Вчера в 8 вечера он готовил ужин.' },
+        neg: { en: "They weren't sleeping when I called.", ru: 'Они не спали, когда я позвонил.' },
+        q:   { en: 'Were you driving to work at 9 a.m.?', ru: 'Ты ехал на работу в 9 утра?' }
+      },
+      traps: [
+        'С местоимением I используется was (I was working), а с you / we / they — were.',
+        'Отрицания и вопросы строятся через was / were, без did!'
+      ],
+      timelineType: 'wave_past'
+    },
+    {
+      id: 'past_perf',
+      name: 'Past Perfect',
+      group: 'past',
+      aspect: 'perfect',
+      shortRu: 'Предпрошедшее: случилось ДО другого прошлого',
+      essence: 'Показывает, что одно действие завершилось раньше другого момента или события в прошлом.',
+      markers: ['before we arrived', 'by 6 p.m. yesterday', 'by the time', 'already (в прошлом)'],
+      formulas: {
+        aff: [
+          { subj: 'Все лица', form: 'had + V3' }
+        ],
+        neg: [
+          { subj: 'Все лица', form: "hadn't + V3" }
+        ],
+        q: [
+          { subj: 'Все лица', form: 'Had + S + V3?' }
+        ]
+      },
+      examples: {
+        aff: { en: 'By the time we arrived, she had finished the report.', ru: 'К моменту нашего прихода она уже закончила отчёт.' },
+        neg: { en: "He hadn't read the email before the meeting.", ru: 'Он не прочитал письмо до встречи.' },
+        q:   { en: 'Had they left before 6 p.m.?', ru: 'Они ушли до 6 вечера?' }
+      },
+      traps: [
+        'Had одинаков для всех лиц (I, he, they), но после него строго 3-я форма (V3).',
+        'Ищите «точку отсечки» в прошлом: by 5 p.m. yesterday, before I arrived.'
+      ],
+      timelineType: 'before_past'
+    },
+    {
+      id: 'past_perf_cont',
+      name: 'Past Perfect Continuous',
+      group: 'past',
+      aspect: 'perfect_cont',
+      shortRu: 'Длительный процесс ДО момента в прошлом',
+      essence: 'Показывает, как долго длилось действие до того, как случилось другое событие в прошлом.',
+      markers: ['for an hour before...', 'all morning before...', 'since 8 a.m. before...'],
+      formulas: {
+        aff: [
+          { subj: 'Все лица', form: 'had been + V-ing' }
+        ],
+        neg: [
+          { subj: 'Все лица', form: "hadn't been + V-ing" }
+        ],
+        q: [
+          { subj: 'Все лица', form: 'Had + S + been + V-ing?' }
+        ]
+      },
+      examples: {
+        aff: { en: 'She had been waiting for an hour before the bus came.', ru: 'Она ждала целый час, прежде чем пришёл автобус.' },
+        neg: { en: "They hadn't been working long before the power went out.", ru: 'Они работали недолго, прежде чем отключили свет.' },
+        q:   { en: 'Had you been studying all night before the exam?', ru: 'Ты учился всю ночь перед экзаменом?' }
+      },
+      traps: [
+        'Сочетает два маркера сразу: длительность (for an hour) + прошлая граница (before he arrived).',
+        'Не забывайте been между had и V-ing.'
+      ],
+      timelineType: 'wave_before_past'
+    },
+    {
+      id: 'fut_simple',
+      name: 'Future Simple',
+      group: 'future',
+      aspect: 'simple',
+      shortRu: 'Простое будущее, обещания, прогнозы',
+      essence: 'Спонтанные решения, прогнозы, обещания и обычные действия в будущем.',
+      markers: ['tomorrow', 'next week', 'soon', 'I think', 'probably', 'in two days'],
+      formulas: {
+        aff: [
+          { subj: 'Все лица', form: 'will + V1' }
+        ],
+        neg: [
+          { subj: 'Все лица', form: "won't (will not) + V1" }
+        ],
+        q: [
+          { subj: 'Все лица', form: 'Will + S + V1?' }
+        ]
+      },
+      examples: {
+        aff: { en: 'I think she will send the file tomorrow.', ru: 'Думаю, она отправит файл завтра.' },
+        neg: { en: "They won't travel next month.", ru: 'Они не поедут в путешествие в следующем месяце.' },
+        q:   { en: 'Will you help us tomorrow?', ru: 'Ты поможешь нам завтра?' }
+      },
+      traps: [
+        'После will никогда не добавляется -s (he will work, не works) и частица to (не will to work).',
+        'Сокращение от will not — won’t (не willn’t).'
+      ],
+      timelineType: 'dot_future'
+    },
+    {
+      id: 'fut_cont',
+      name: 'Future Continuous',
+      group: 'future',
+      aspect: 'continuous',
+      shortRu: 'Процесс в конкретный момент будущего',
+      essence: 'Действие будет находиться в самом разгаре в определённое время в будущем.',
+      markers: ['at this time tomorrow', 'at 8 p.m. tonight', 'all day tomorrow'],
+      formulas: {
+        aff: [
+          { subj: 'Все лица', form: 'will be + V-ing' }
+        ],
+        neg: [
+          { subj: 'Все лица', form: "won't be + V-ing" }
+        ],
+        q: [
+          { subj: 'Все лица', form: 'Will + S + be + V-ing?' }
+        ]
+      },
+      examples: {
+        aff: { en: 'At this time tomorrow, we will be flying to Rome.', ru: 'Завтра в это же время мы будем лететь в Рим.' },
+        neg: { en: "He won't be working at 9 p.m. tonight.", ru: 'Он не будет работать сегодня в 9 вечера.' },
+        q:   { en: 'Will they be studying at 5 p.m. tomorrow?', ru: 'Они будут заниматься завтра в 5 вечера?' }
+      },
+      traps: [
+        'Не пропускайте be: will be working (а не will working).',
+        'Отличие от Future Simple: указан точный момент в будущем (at 8 p.m. tomorrow), в который идёт процесс.'
+      ],
+      timelineType: 'wave_future'
+    },
+    {
+      id: 'fut_perf',
+      name: 'Future Perfect',
+      group: 'future',
+      aspect: 'perfect',
+      shortRu: 'Будет завершено К моменту в будущем',
+      essence: 'Действие уже будет полностью выполнено к определённому дедлайну в будущем.',
+      markers: ['by tomorrow', 'by 6 p.m.', 'by next Friday', 'by the end of the week'],
+      formulas: {
+        aff: [
+          { subj: 'Все лица', form: 'will have + V3' }
+        ],
+        neg: [
+          { subj: 'Все лица', form: "won't have + V3" }
+        ],
+        q: [
+          { subj: 'Все лица', form: 'Will + S + have + V3?' }
+        ]
+      },
+      examples: {
+        aff: { en: 'By next Friday, she will have finished the project.', ru: 'К следующей пятнице она уже закончит проект.' },
+        neg: { en: "They won't have built the house by autumn.", ru: 'Они не достроят дом к осени.' },
+        q:   { en: 'Will he have written the report by 5 p.m.?', ru: 'Он уже напишет отчёт к 5 вечера?' }
+      },
+      traps: [
+        'Даже с he/she/it после will всегда have (НИКОГДА не will has!).',
+        'Главный маркер — предлог by + будущее время (by tomorrow, by 6 p.m.).'
+      ],
+      timelineType: 'before_future'
+    },
+    {
+      id: 'fut_perf_cont',
+      name: 'Future Perfect Continuous',
+      group: 'future',
+      aspect: 'perfect_cont',
+      shortRu: 'Как долго процесс будет идти К моменту в будущем',
+      essence: 'Показывает длительность процесса, который будет идти к указанному моменту в будущем.',
+      markers: ['by 5 p.m. ... for 3 hours', 'by next year ... for 5 years'],
+      formulas: {
+        aff: [
+          { subj: 'Все лица', form: 'will have been + V-ing' }
+        ],
+        neg: [
+          { subj: 'Все лица', form: "won't have been + V-ing" }
+        ],
+        q: [
+          { subj: 'Все лица', form: 'Will + S + have been + V-ing?' }
+        ]
+      },
+      examples: {
+        aff: { en: 'By 6 p.m., she will have been working for eight hours.', ru: 'К 6 вечера она будет работать уже 8 часов.' },
+        neg: { en: "They won't have been living here for a year by May.", ru: 'К маю ещё не исполнится год, как они здесь живут.' },
+        q:   { en: 'Will you have been studying for two hours by noon?', ru: 'К полудню ты будешь заниматься уже два часа?' }
+      },
+      traps: [
+        'Всегда have (не has) + been + V-ing. И в предложении почти всегда есть пара: by [момент] + for [длительность].'
+      ],
+      timelineType: 'wave_before_future'
+    }
+  ];
+
+  const TENSE_MAP = Object.fromEntries(TENSES.map(t => [t.id, t]));
+
+  const GROUP_COLORS = {
+    present: {
+      bg: 'bg-emerald-50', border: 'border-emerald-200', text: 'text-emerald-700',
+      solid: 'bg-emerald-600 text-white', ring: 'ring-emerald-500', bar: 'bg-emerald-500', hex: '#059669'
+    },
+    past: {
+      bg: 'bg-amber-50', border: 'border-amber-200', text: 'text-amber-700',
+      solid: 'bg-amber-600 text-white', ring: 'ring-amber-500', bar: 'bg-amber-500', hex: '#d97706'
+    },
+    future: {
+      bg: 'bg-indigo-50', border: 'border-indigo-200', text: 'text-indigo-700',
+      solid: 'bg-indigo-600 text-white', ring: 'ring-indigo-500', bar: 'bg-indigo-500', hex: '#4f46e5'
+    }
+  };
+
+  /* ============================================================================
+     2. CURATED VERB & SUBJECT BANK (ZERO AWKWARD ENGLISH, 1000+ COMBINATIONS)
+     ============================================================================ */
+  const VERBS = [
+    { v1: 'work',   v3s: 'works',   v2: 'worked',   v3: 'worked',   ving: 'working',   irreg: false, rule3s: 's',   objs: ['at the office', 'on the project', 'from home'], ruInf: 'работать' },
+    { v1: 'study',  v3s: 'studies', v2: 'studied',  v3: 'studied',  ving: 'studying',  irreg: false, rule3s: 'ies', objs: ['English', 'for the exam', 'data science'], ruInf: 'учить / заниматься' },
+    { v1: 'watch',  v3s: 'watches', v2: 'watched',  v3: 'watched',  ving: 'watching',  irreg: false, rule3s: 'es',  objs: ['a documentary', 'the news', 'a movie'], ruInf: 'смотреть' },
+    { v1: 'go',     v3s: 'goes',    v2: 'went',     v3: 'gone',     ving: 'going',     irreg: true,  rule3s: 'es',  objs: ['to the gym', 'to the library', 'to the office'], ruInf: 'ходить / ехать' },
+    { v1: 'write',  v3s: 'writes',  v2: 'wrote',    v3: 'written',  ving: 'writing',   irreg: true,  rule3s: 's',   objs: ['the report', 'emails', 'an article'], ruInf: 'писать' },
+    { v1: 'cook',   v3s: 'cooks',   v2: 'cooked',   v3: 'cooked',   ving: 'cooking',   irreg: false, rule3s: 's',   objs: ['dinner', 'pasta', 'breakfast'], ruInf: 'готовить' },
+    { v1: 'buy',    v3s: 'buys',    v2: 'bought',   v3: 'bought',   ving: 'buying',    irreg: true,  rule3s: 's',   objs: ['groceries', 'train tickets', 'a new laptop'], ruInf: 'покупать' },
+    { v1: 'read',   v3s: 'reads',   v2: 'read',     v3: 'read',     ving: 'reading',   irreg: true,  rule3s: 's',   objs: ['a novel', 'the instructions', 'tech blogs'], ruInf: 'читать' },
+    { v1: 'play',   v3s: 'plays',   v2: 'played',   v3: 'played',   ving: 'playing',   irreg: false, rule3s: 's',   objs: ['tennis', 'the guitar', 'chess'], ruInf: 'играть' },
+    { v1: 'drink',  v3s: 'drinks',  v2: 'drank',    v3: 'drunk',    ving: 'drinking',  irreg: true,  rule3s: 's',   objs: ['green tea', 'coffee', 'fresh juice'], ruInf: 'пить' },
+    { v1: 'eat',    v3s: 'eats',    v2: 'ate',      v3: 'eaten',    ving: 'eating',    irreg: true,  rule3s: 's',   objs: ['lunch', 'breakfast', 'salad'], ruInf: 'есть' },
+    { v1: 'drive',  v3s: 'drives',  v2: 'drove',    v3: 'driven',   ving: 'driving',   irreg: true,  rule3s: 's',   objs: ['to work', 'to the airport', 'home'], ruInf: 'ехать за рулём' },
+    { v1: 'run',    v3s: 'runs',    v2: 'ran',      v3: 'run',      ving: 'running',   irreg: true,  rule3s: 's',   objs: ['in the park', 'five kilometers', 'outside'], ruInf: 'бегать' },
+    { v1: 'speak',  v3s: 'speaks',  v2: 'spoke',    v3: 'spoken',   ving: 'speaking',  irreg: true,  rule3s: 's',   objs: ['to the manager', 'English', 'with clients'], ruInf: 'говорить' },
+    { v1: 'fix',    v3s: 'fixes',   v2: 'fixed',    v3: 'fixed',    ving: 'fixing',    irreg: false, rule3s: 'es',  objs: ['the bike', 'the bug', 'the printer'], ruInf: 'чинить' },
+    { v1: 'clean',  v3s: 'cleans',  v2: 'cleaned',  v3: 'cleaned',  ving: 'cleaning',  irreg: false, rule3s: 's',   objs: ['the apartment', 'the kitchen', 'the desk'], ruInf: 'убирать' },
+    { v1: 'finish', v3s: 'finishes',v2: 'finished', v3: 'finished', ving: 'finishing', irreg: false, rule3s: 'es',  objs: ['the task', 'the presentation', 'the course'], ruInf: 'заканчивать' },
+    { v1: 'send',   v3s: 'sends',   v2: 'sent',     v3: 'sent',     ving: 'sending',   irreg: true,  rule3s: 's',   objs: ['the invoice', 'the documents', 'a message'], ruInf: 'отправлять' },
+    { v1: 'take',   v3s: 'takes',   v2: 'took',     v3: 'taken',    ving: 'taking',    irreg: true,  rule3s: 's',   objs: ['notes', 'photos', 'the morning train'], ruInf: 'брать / делать' },
+    { v1: 'make',   v3s: 'makes',   v2: 'made',     v3: 'made',     ving: 'making',    irreg: true,  rule3s: 's',   objs: ['a plan', 'coffee', 'a presentation'], ruInf: 'делать' },
+    { v1: 'swim',   v3s: 'swims',   v2: 'swam',     v3: 'swum',     ving: 'swimming',  irreg: true,  rule3s: 's',   objs: ['in the pool', 'at the beach', 'in the lake'], ruInf: 'плавать' },
+    { v1: 'wait',   v3s: 'waits',   v2: 'waited',   v3: 'waited',   ving: 'waiting',   irreg: false, rule3s: 's',   objs: ['for the bus', 'for the reply', 'at the station'], ruInf: 'ждать' },
+    { v1: 'paint',  v3s: 'paints',  v2: 'painted',  v3: 'painted',  ving: 'painting',  irreg: false, rule3s: 's',   objs: ['the living room', 'a landscape', 'the fence'], ruInf: 'красить / рисовать' },
+    { v1: 'build',  v3s: 'builds',  v2: 'built',    v3: 'built',    ving: 'building',  irreg: true,  rule3s: 's',   objs: ['a web app', 'a prototype', 'a new model'], ruInf: 'строить / создавать' },
+    { v1: 'travel', v3s: 'travels', v2: 'traveled', v3: 'traveled', ving: 'traveling', irreg: false, rule3s: 's',   objs: ['to Spain', 'around Europe', 'by train'], ruInf: 'путешествовать' },
+    { v1: 'prepare',v3s: 'prepares',v2: 'prepared', v3: 'prepared', ving: 'preparing', irreg: false, rule3s: 's',   objs: ['the slides', 'for the interview', 'a summary'], ruInf: 'готовить(ся)' }
+  ];
+
+  // Dedicated 'It' verbs so "It" is tested naturally too!
+  const IT_VERBS = [
+    { v1: 'rain', v3s: 'rains', v2: 'rained', v3: 'rained', ving: 'raining', irreg: false, rule3s: 's', objs: ['heavily', 'outside', 'in autumn'], ruInf: 'идти (о дожде)' },
+    { v1: 'snow', v3s: 'snows', v2: 'snowed', v3: 'snowed', ving: 'snowing', irreg: false, rule3s: 's', objs: ['in the mountains', 'outside', 'in December'], ruInf: 'идти (о снеге)' },
+    { v1: 'work', v3s: 'works', v2: 'worked', v3: 'worked', ving: 'working', irreg: false, rule3s: 's', objs: ['smoothly', 'faster now', 'without errors'], ruInf: 'работать (о системе)' }
+  ];
+
+  const SUBJECTS = [
+    { text: 'I',           lower: 'I',           person: '1s', group: 'other' },
+    { text: 'You',         lower: 'you',         person: '2',  group: 'other' },
+    { text: 'We',          lower: 'we',          person: '1p', group: 'other' },
+    { text: 'They',        lower: 'they',        person: '3p', group: 'other' },
+    { text: 'My friends',  lower: 'my friends',  person: '3p', group: 'other' },
+    { text: 'The students',lower: 'the students',person: '3p', group: 'other' },
+    { text: 'He',          lower: 'he',          person: '3s', group: '3s' },
+    { text: 'She',         lower: 'she',         person: '3s', group: '3s' },
+    { text: 'Alex',        lower: 'Alex',        person: '3s', group: '3s' },
+    { text: 'Maria',       lower: 'Maria',       person: '3s', group: '3s' },
+    { text: 'My brother',  lower: 'my brother',  person: '3s', group: '3s' },
+    { text: 'It',          lower: 'it',          person: '3s', group: '3s', isIt: true }
+  ];
+
+  // Sentence frames per tense & form.
+  // Placeholders: {S} (subject), {BLANK}, {OBJ}
+  // For questions, {BLANK} replaces "Aux + Subject + MainVerb", so {S} is NOT in the frame.
+  const FRAMES = {
+    pres_simple: {
+      aff: [
+        { tpl: '{S} {BLANK} {OBJ} every day.', marker: 'every day', ruHint: 'Регулярное действие (каждый день)' },
+        { tpl: 'Usually, {s} {BLANK} {OBJ} on weekends.', marker: 'usually / on weekends', ruHint: 'Привычка (обычно по выходным)' },
+        { tpl: '{S} {BLANK} {OBJ} twice a week.', marker: 'twice a week', ruHint: 'Повторяющееся действие (дважды в неделю)' }
+      ],
+      neg: [
+        { tpl: '{S} {BLANK} {OBJ} on Mondays.', marker: 'on Mondays', ruHint: 'Регулярное отрицание (по понедельникам)' },
+        { tpl: 'Normally, {s} {BLANK} {OBJ} in the evening.', marker: 'normally', ruHint: 'Обычное правило (как правило)' }
+      ],
+      q: [
+        { tpl: '{BLANK} {OBJ} every weekend?', marker: 'every weekend', ruHint: 'Вопрос о регулярном действии' },
+        { tpl: '{BLANK} {OBJ} every morning?', marker: 'every morning', ruHint: 'Вопрос о привычке' }
+      ]
+    },
+    pres_cont: {
+      aff: [
+        { tpl: 'Look! {S} {BLANK} {OBJ} right now.', marker: 'Look! / right now', ruHint: 'Процесс прямо сейчас' },
+        { tpl: 'At the moment, {s} {BLANK} {OBJ}.', marker: 'at the moment', ruHint: 'Действие в данный момент' }
+      ],
+      neg: [
+        { tpl: '{S} {BLANK} {OBJ} right now.', marker: 'right now', ruHint: 'Отрицание действия в момент речи' },
+        { tpl: 'At the moment, {s} {BLANK} {OBJ}.', marker: 'at the moment', ruHint: 'Прямо сейчас этого не происходит' }
+      ],
+      q: [
+        { tpl: '{BLANK} {OBJ} right now?', marker: 'right now', ruHint: 'Вопрос о том, что происходит сейчас' },
+        { tpl: '{BLANK} {OBJ} at the moment?', marker: 'at the moment', ruHint: 'Вопрос о текущем процессе' }
+      ]
+    },
+    pres_perf: {
+      aff: [
+        { tpl: '{S} {BLANK} {OBJ} today.', marker: 'today (результат к сейчас)', ruHint: 'Действие завершено сегодня, важен результат' },
+        { tpl: 'Recently, {s} {BLANK} {OBJ}.', marker: 'recently', ruHint: 'Недавнее завершённое событие' },
+        { tpl: '{S} {BLANK} {OBJ} this week.', marker: 'this week', ruHint: 'Результат за незавершённый период (на этой неделе)' }
+      ],
+      neg: [
+        { tpl: '{S} {BLANK} {OBJ} yet.', marker: 'yet', ruHint: 'Ещё не сделано к настоящему моменту' },
+        { tpl: '{S} {BLANK} {OBJ} today.', marker: 'today', ruHint: 'Сегодня этого ещё не произошло' }
+      ],
+      q: [
+        { tpl: '{BLANK} {OBJ} yet?', marker: 'yet', ruHint: 'Вопрос о результате (уже сделано?)' },
+        { tpl: '{BLANK} {OBJ} this week?', marker: 'this week', ruHint: 'Вопрос об опыте / результате на этой неделе' }
+      ]
+    },
+    pres_perf_cont: {
+      aff: [
+        { tpl: '{S} {BLANK} {OBJ} for two hours.', marker: 'for two hours', ruHint: 'Процесс длится уже 2 часа и продолжается' },
+        { tpl: '{S} {BLANK} {OBJ} since 9 a.m.', marker: 'since 9 a.m.', ruHint: 'Процесс идёт с 9 утра до сих пор' }
+      ],
+      neg: [
+        { tpl: '{S} {BLANK} {OBJ} since morning.', marker: 'since morning', ruHint: 'Процесс не идёт с самого утра' },
+        { tpl: '{S} {BLANK} {OBJ} for very long.', marker: 'for very long', ruHint: 'Процесс длится недолго' }
+      ],
+      q: [
+        { tpl: '{BLANK} {OBJ} for two hours?', marker: 'for two hours', ruHint: 'Вопрос о длительности текущего процесса' },
+        { tpl: '{BLANK} {OBJ} since morning?', marker: 'since morning', ruHint: 'Вопрос: идёт ли процесс с самого утра?' }
+      ]
+    },
+    past_simple: {
+      aff: [
+        { tpl: '{S} {BLANK} {OBJ} yesterday.', marker: 'yesterday', ruHint: 'Завершённый факт в прошлом (вчера)' },
+        { tpl: 'Last week, {s} {BLANK} {OBJ}.', marker: 'last week', ruHint: 'Событие на прошлой неделе' },
+        { tpl: '{S} {BLANK} {OBJ} two days ago.', marker: 'two days ago', ruHint: 'Завершилось два дня назад' }
+      ],
+      neg: [
+        { tpl: '{S} {BLANK} {OBJ} yesterday.', marker: 'yesterday', ruHint: 'Отрицание факта в прошлом' },
+        { tpl: 'Last weekend, {s} {BLANK} {OBJ}.', marker: 'last weekend', ruHint: 'Этого не было в прошлые выходные' }
+      ],
+      q: [
+        { tpl: '{BLANK} {OBJ} yesterday?', marker: 'yesterday', ruHint: 'Вопрос о завершённом действии вчера' },
+        { tpl: '{BLANK} {OBJ} last week?', marker: 'last week', ruHint: 'Вопрос о событии на прошлой неделе' }
+      ]
+    },
+    past_cont: {
+      aff: [
+        { tpl: 'At 7 p.m. yesterday, {s} {BLANK} {OBJ}.', marker: 'at 7 p.m. yesterday', ruHint: 'Процесс в точный момент прошлого' },
+        { tpl: 'When the phone rang, {s} {BLANK} {OBJ}.', marker: 'when the phone rang', ruHint: 'Фоновый процесс в момент другого события' }
+      ],
+      neg: [
+        { tpl: 'At 8 p.m. yesterday, {s} {BLANK} {OBJ}.', marker: 'at 8 p.m. yesterday', ruHint: 'В этот момент прошлого процесс не шёл' },
+        { tpl: 'When I arrived, {s} {BLANK} {OBJ}.', marker: 'when I arrived', ruHint: 'Когда я пришёл, этого процесса не было' }
+      ],
+      q: [
+        { tpl: '{BLANK} {OBJ} at 7 p.m. yesterday?', marker: 'at 7 p.m. yesterday', ruHint: 'Вопрос о процессе в конкретный час вчера' },
+        { tpl: '{BLANK} {OBJ} when I called?', marker: 'when I called', ruHint: 'Вопрос о фоновом процессе в прошлом' }
+      ]
+    },
+    past_perf: {
+      aff: [
+        { tpl: 'By the time we arrived, {s} {BLANK} {OBJ}.', marker: 'by the time we arrived', ruHint: 'Случилось раньше другого события в прошлом' },
+        { tpl: 'Before 6 p.m. yesterday, {s} {BLANK} {OBJ}.', marker: 'before 6 p.m. yesterday', ruHint: 'Завершилось до определённого часа вчера' }
+      ],
+      neg: [
+        { tpl: 'Before the meeting started, {s} {BLANK} {OBJ}.', marker: 'before the meeting started', ruHint: 'Ещё не было сделано до начала встречи' },
+        { tpl: 'By 5 p.m. yesterday, {s} {BLANK} {OBJ}.', marker: 'by 5 p.m. yesterday', ruHint: 'Не завершилось к 5 вечера вчера' }
+      ],
+      q: [
+        { tpl: '{BLANK} {OBJ} before we arrived?', marker: 'before we arrived', ruHint: 'Вопрос: завершилось ли действие до нашего прихода?' },
+        { tpl: '{BLANK} {OBJ} by 6 p.m. yesterday?', marker: 'by 6 p.m. yesterday', ruHint: 'Вопрос о результате к моменту в прошлом' }
+      ]
+    },
+    past_perf_cont: {
+      aff: [
+        { tpl: '{S} {BLANK} {OBJ} for an hour before the storm started.', marker: 'for an hour before...', ruHint: 'Длительный процесс до события в прошлом' },
+        { tpl: 'Before he arrived, {s} {BLANK} {OBJ} all morning.', marker: 'before he arrived + all morning', ruHint: 'Процесс шёл всё утро до его прихода' }
+      ],
+      neg: [
+        { tpl: '{S} {BLANK} {OBJ} for long before the power went out.', marker: 'for long before...', ruHint: 'Процесс шёл недолго до события в прошлом' }
+      ],
+      q: [
+        { tpl: '{BLANK} {OBJ} for an hour before we arrived?', marker: 'for an hour before...', ruHint: 'Вопрос о длительности процесса до момента в прошлом' }
+      ]
+    },
+    fut_simple: {
+      aff: [
+        { tpl: 'Tomorrow, {s} {BLANK} {OBJ}.', marker: 'tomorrow', ruHint: 'Обычное действие в будущем (завтра)' },
+        { tpl: 'I think {s} {BLANK} {OBJ} next week.', marker: 'I think / next week', ruHint: 'Прогноз на следующую неделю' }
+      ],
+      neg: [
+        { tpl: 'Tomorrow, {s} {BLANK} {OBJ}.', marker: 'tomorrow', ruHint: 'Отрицание действия в будущем' },
+        { tpl: 'Probably, {s} {BLANK} {OBJ} next week.', marker: 'probably / next week', ruHint: 'Вероятно, этого не будет' }
+      ],
+      q: [
+        { tpl: '{BLANK} {OBJ} tomorrow?', marker: 'tomorrow', ruHint: 'Вопрос о простом действии завтра' },
+        { tpl: '{BLANK} {OBJ} next week?', marker: 'next week', ruHint: 'Вопрос о планах/действии на следующей неделе' }
+      ]
+    },
+    fut_cont: {
+      aff: [
+        { tpl: 'At this time tomorrow, {s} {BLANK} {OBJ}.', marker: 'at this time tomorrow', ruHint: 'Процесс в конкретный момент завтра' },
+        { tpl: 'At 8 p.m. tonight, {s} {BLANK} {OBJ}.', marker: 'at 8 p.m. tonight', ruHint: 'Процесс будет идти сегодня в 8 вечера' }
+      ],
+      neg: [
+        { tpl: 'At 9 p.m. tonight, {s} {BLANK} {OBJ}.', marker: 'at 9 p.m. tonight', ruHint: 'В 9 вечера этого процесса не будет' }
+      ],
+      q: [
+        { tpl: '{BLANK} {OBJ} at this time tomorrow?', marker: 'at this time tomorrow', ruHint: 'Вопрос о процессе завтра в это же время' },
+        { tpl: '{BLANK} {OBJ} at 8 p.m. tonight?', marker: 'at 8 p.m. tonight', ruHint: 'Вопрос о процессе сегодня в 8 вечера' }
+      ]
+    },
+    fut_perf: {
+      aff: [
+        { tpl: 'By tomorrow evening, {s} {BLANK} {OBJ}.', marker: 'by tomorrow evening', ruHint: 'Будет уже завершено к завтрашнему вечеру' },
+        { tpl: 'By next Friday, {s} {BLANK} {OBJ}.', marker: 'by next Friday', ruHint: 'Результат к дедлайну в будущем' }
+      ],
+      neg: [
+        { tpl: 'By 6 p.m. tomorrow, {s} {BLANK} {OBJ}.', marker: 'by 6 p.m. tomorrow', ruHint: 'Ещё не будет завершено к 6 вечера завтра' }
+      ],
+      q: [
+        { tpl: '{BLANK} {OBJ} by tomorrow evening?', marker: 'by tomorrow evening', ruHint: 'Вопрос: будет ли уже готово к завтрашнему вечеру?' },
+        { tpl: '{BLANK} {OBJ} by next Friday?', marker: 'by next Friday', ruHint: 'Вопрос о завершении к следующей пятнице' }
+      ]
+    },
+    fut_perf_cont: {
+      aff: [
+        { tpl: 'By 5 p.m., {s} {BLANK} {OBJ} for three hours.', marker: 'by 5 p.m. + for three hours', ruHint: 'Длительность процесса к будущему часу' },
+        { tpl: 'By next month, {s} {BLANK} {OBJ} for a whole year.', marker: 'by next month + for a year', ruHint: 'К следующему месяцу процесс будет идти уже год' }
+      ],
+      neg: [
+        { tpl: 'By 6 p.m., {s} {BLANK} {OBJ} for more than an hour.', marker: 'by 6 p.m. + for...', ruHint: 'К 6 вечера процесс не будет длиться больше часа' }
+      ],
+      q: [
+        { tpl: '{BLANK} {OBJ} for three hours by 5 p.m.?', marker: 'for three hours + by 5 p.m.', ruHint: 'Вопрос о длительности процесса к 5 вечера' }
+      ]
+    }
+  };
+
+  /* ============================================================================
+     3. GRAMMAR CONJUGATOR & DIAGNOSTIC DISTRACTOR GENERATOR
+     ============================================================================ */
+  function conjugate(tenseId, form, subj, verb) {
+    const is3s = subj.person === '3s';
+    const is1s = subj.person === '1s';
+    const sLow = subj.lower;
+
+    const bePres = is1s ? 'am' : (is3s ? 'is' : 'are');
+    const bePresCap = is1s ? 'Am' : (is3s ? 'Is' : 'Are');
+    const bePresNeg = is1s ? "am not" : (is3s ? "isn't" : "aren't");
+    const bePresNegAlt = is1s ? "'m not" : (is3s ? 'is not' : 'are not');
+
+    const bePast = (is1s || is3s) ? 'was' : 'were';
+    const bePastCap = (is1s || is3s) ? 'Was' : 'Were';
+    const bePastNeg = (is1s || is3s) ? "wasn't" : "weren't";
+    const bePastNegAlt = (is1s || is3s) ? 'was not' : 'were not';
+
+    const havePres = is3s ? 'has' : 'have';
+    const havePresCap = is3s ? 'Has' : 'Have';
+    const havePresNeg = is3s ? "hasn't" : "haven't";
+    const havePresNegAlt = is3s ? 'has not' : 'have not';
+
+    const doPresCap = is3s ? 'Does' : 'Do';
+    const doPresNeg = is3s ? "doesn't" : "don't";
+    const doPresNegAlt = is3s ? 'does not' : 'do not';
+
+    switch (tenseId) {
+      case 'pres_simple':
+        if (form === 'aff') return { main: is3s ? verb.v3s : verb.v1, alts: [] };
+        if (form === 'neg') return { main: `${doPresNeg} ${verb.v1}`, alts: [`${doPresNegAlt} ${verb.v1}`] };
+        return { main: `${doPresCap} ${sLow} ${verb.v1}`, alts: [] };
+
+      case 'pres_cont':
+        if (form === 'aff') return { main: `${bePres} ${verb.ving}`, alts: [] };
+        if (form === 'neg') return { main: `${bePresNeg} ${verb.ving}`, alts: [`${bePresNegAlt} ${verb.ving}`] };
+        return { main: `${bePresCap} ${sLow} ${verb.ving}`, alts: [] };
+
+      case 'pres_perf':
+        if (form === 'aff') return { main: `${havePres} ${verb.v3}`, alts: [] };
+        if (form === 'neg') return { main: `${havePresNeg} ${verb.v3}`, alts: [`${havePresNegAlt} ${verb.v3}`] };
+        return { main: `${havePresCap} ${sLow} ${verb.v3}`, alts: [] };
+
+      case 'pres_perf_cont':
+        if (form === 'aff') return { main: `${havePres} been ${verb.ving}`, alts: [] };
+        if (form === 'neg') return { main: `${havePresNeg} been ${verb.ving}`, alts: [`${havePresNegAlt} been ${verb.ving}`] };
+        return { main: `${havePresCap} ${sLow} been ${verb.ving}`, alts: [] };
+
+      case 'past_simple':
+        if (form === 'aff') return { main: verb.v2, alts: [] };
+        if (form === 'neg') return { main: `didn't ${verb.v1}`, alts: [`did not ${verb.v1}`] };
+        return { main: `Did ${sLow} ${verb.v1}`, alts: [] };
+
+      case 'past_cont':
+        if (form === 'aff') return { main: `${bePast} ${verb.ving}`, alts: [] };
+        if (form === 'neg') return { main: `${bePastNeg} ${verb.ving}`, alts: [`${bePastNegAlt} ${verb.ving}`] };
+        return { main: `${bePastCap} ${sLow} ${verb.ving}`, alts: [] };
+
+      case 'past_perf':
+        if (form === 'aff') return { main: `had ${verb.v3}`, alts: [] };
+        if (form === 'neg') return { main: `hadn't ${verb.v3}`, alts: [`had not ${verb.v3}`] };
+        return { main: `Had ${sLow} ${verb.v3}`, alts: [] };
+
+      case 'past_perf_cont':
+        if (form === 'aff') return { main: `had been ${verb.ving}`, alts: [] };
+        if (form === 'neg') return { main: `hadn't been ${verb.ving}`, alts: [`had not been ${verb.ving}`] };
+        return { main: `Had ${sLow} been ${verb.ving}`, alts: [] };
+
+      case 'fut_simple':
+        if (form === 'aff') return { main: `will ${verb.v1}`, alts: [] };
+        if (form === 'neg') return { main: `won't ${verb.v1}`, alts: [`will not ${verb.v1}`] };
+        return { main: `Will ${sLow} ${verb.v1}`, alts: [] };
+
+      case 'fut_cont':
+        if (form === 'aff') return { main: `will be ${verb.ving}`, alts: [] };
+        if (form === 'neg') return { main: `won't be ${verb.ving}`, alts: [`will not be ${verb.ving}`] };
+        return { main: `Will ${sLow} be ${verb.ving}`, alts: [] };
+
+      case 'fut_perf':
+        if (form === 'aff') return { main: `will have ${verb.v3}`, alts: [] };
+        if (form === 'neg') return { main: `won't have ${verb.v3}`, alts: [`will not have ${verb.v3}`] };
+        return { main: `Will ${sLow} have ${verb.v3}`, alts: [] };
+
+      case 'fut_perf_cont':
+        if (form === 'aff') return { main: `will have been ${verb.ving}`, alts: [] };
+        if (form === 'neg') return { main: `won't have been ${verb.ving}`, alts: [`will not have been ${verb.ving}`] };
+        return { main: `Will ${sLow} have been ${verb.ving}`, alts: [] };
+    }
+  }
+
+  // Generate 3 pedagogically meaningful distractors with targeted Russian explanations!
+  function buildDistractors(tenseId, form, subj, verb, correctText) {
+    const is3s = subj.person === '3s';
+    const is1s = subj.person === '1s';
+    const sLow = subj.lower;
+    const pool = [];
+
+    const add = (text, reason) => {
+      if (!text || text.toLowerCase() === correctText.toLowerCase()) return;
+      if (pool.some(p => p.text.toLowerCase() === text.toLowerCase())) return;
+      pool.push({ text, reason });
+    };
+
+    if (tenseId === 'pres_simple') {
+      if (form === 'aff') {
+        if (is3s) {
+          add(verb.v1, `С подлежащим «${subj.text}» (he/she/it) в Present Simple к глаголу обязательно добавляется окончание -s / -es: ${verb.v3s}.`);
+          add(`is ${verb.ving}`, `Здесь речь о регулярном действии, а не о процессе прямо сейчас — нужен Present Simple, а не Present Continuous.`);
+          add(`is ${verb.v1}`, `В Present Simple с обычными глаголами вспомогательный глагол is не нужен — достаточно добавить -s/-es к глаголу (${verb.v3s}).`);
+        } else {
+          add(verb.v3s, `Окончание -s/-es добавляется только для he/she/it. С «${subj.text}» используется начальная форма (${verb.v1}).`);
+          add(`${is1s ? 'am' : 'are'} ${verb.ving}`, `Маркер указывает на регулярность, а не на действие прямо сейчас — нужен Present Simple.`);
+          add(`do ${verb.v1}`, `В обычном утверждении Present Simple вспомогательный do не ставится.`);
+        }
+      } else if (form === 'neg') {
+        if (is3s) {
+          add(`don't ${verb.v1}`, `С «${subj.text}» (he/she/it) в отрицании Present Simple используется doesn't, а не don't.`);
+          add(`doesn't ${verb.v3s}`, `После doesn't окончание -s у основного глагола убирается! Правильно: doesn't ${verb.v1}.`);
+          add(`isn't ${verb.ving}`, `Контекст говорит о регулярном действии, а не о моменте речи — нужно doesn't + V1.`);
+        } else {
+          add(`doesn't ${verb.v1}`, `Doesn't используется только с he/she/it. С «${subj.text}» нужно don't.`);
+          add(`not ${verb.v1}`, `В английском нельзя просто поставить not перед глаголом — нужен вспомогательный don't.`);
+          add(`${is1s ? 'am not' : "aren't"} ${verb.ving}`, `Речь о регулярном действии, а не о процессе прямо сейчас — нужен Present Simple.`);
+        }
+      } else { // q
+        if (is3s) {
+          add(`Do ${sLow} ${verb.v1}`, `С «${subj.text}» (he/she/it) вопрос в Present Simple начинается с Does, а не Do.`);
+          add(`Does ${sLow} ${verb.v3s}`, `После Does основной глагол всегда в начальной форме (без -s): Does ${sLow} ${verb.v1}.`);
+          add(`Is ${sLow} ${verb.ving}`, `Здесь вопрос о регулярной привычке, а не о действии прямо сейчас — нужен Present Simple.`);
+        } else {
+          add(`Does ${sLow} ${verb.v1}`, `Does нужен только для he/she/it. С «${subj.text}» используется Do.`);
+          add(`Do ${sLow} ${verb.v3s}`, `С «${subj.text}» и после Do окончание -s не ставится.`);
+          add(`${is1s ? 'Am' : 'Are'} ${sLow} ${verb.ving}`, `Вопрос о регулярности, а не о процессе в момент речи — нужен Present Simple.`);
+        }
+      }
+    } else if (tenseId === 'pres_cont') {
+      const wrongBe = is3s ? 'are' : 'is';
+      const wrongBeCap = is3s ? 'Are' : 'Is';
+      const wrongBeNeg = is3s ? "aren't" : "isn't";
+      if (form === 'aff') {
+        add(`${wrongBe} ${verb.ving}`, `С «${subj.text}» форма глагола be — ${is1s ? 'am' : (is3s ? 'is' : 'are')}, а не ${wrongBe}.`);
+        add(is3s ? verb.v3s : verb.v1, `Маркер указывает на действие прямо сейчас — нужен Present Continuous (am/is/are + V-ing), а не Present Simple.`);
+        add(verb.ving, `В Present Continuous нельзя опускать вспомогательный глагол am/is/are перед V-ing.`);
+      } else if (form === 'neg') {
+        add(`${wrongBeNeg} ${verb.ving}`, `Проверьте форму глагола be для «${subj.text}»: нужно ${is1s ? 'am not' : (is3s ? "isn't" : "aren't")}.`);
+        add(`${is3s ? "doesn't" : "don't"} ${verb.ving}`, `В Present Continuous отрицание строится через am not / isn't / aren't, а не через do/does.`);
+        add(`${is3s ? "doesn't" : "don't"} ${verb.v1}`, `Действие относится к текущему моменту — нужен Present Continuous, а не Present Simple.`);
+      } else {
+        add(`${wrongBeCap} ${sLow} ${verb.ving}`, `С «${subj.text}» нужна другая форма be: ${is1s ? 'Am' : (is3s ? 'Is' : 'Are')}.`);
+        add(`${is3s ? 'Does' : 'Do'} ${sLow} ${verb.ving}`, `В Present Continuous вопрос задаётся с Am/Is/Are, а не с Do/Does.`);
+        add(`${is3s ? 'Does' : 'Do'} ${sLow} ${verb.v1}`, `Речь о процессе прямо сейчас — нужен Present Continuous.`);
+      }
+    } else if (tenseId === 'pres_perf') {
+      const wrongHave = is3s ? 'have' : 'has';
+      const wrongHaveCap = is3s ? 'Have' : 'Has';
+      const wrongHaveNeg = is3s ? "haven't" : "hasn't";
+      if (form === 'aff') {
+        add(`${wrongHave} ${verb.v3}`, `С «${subj.text}» нужен вспомогательный ${is3s ? 'has' : 'have'}, а не ${wrongHave}.`);
+        add(verb.v2, `Здесь важен результат к настоящему моменту (Present Perfect: have/has + V3), а не просто факт в прошлом.`);
+        if (verb.v2 !== verb.v3) add(`${is3s ? 'has' : 'have'} ${verb.v2}`, `В Present Perfect нужна 3-я форма глагола (${verb.v3}), а не 2-я (${verb.v2}).`);
+        else add(`${is3s ? 'has' : 'have'} ${verb.v1}`, `После have/has глагол должен стоять в 3-й форме (${verb.v3}), а не в начальной.`);
+      } else if (form === 'neg') {
+        add(`${wrongHaveNeg} ${verb.v3}`, `С «${subj.text}» используется ${is3s ? "hasn't" : "haven't"}, а не ${wrongHaveNeg}.`);
+        add(`didn't ${verb.v1}`, `Маркер указывает на связь с настоящим (результат на сейчас) — нужен Present Perfect, а не Past Simple.`);
+        add(`${is3s ? "hasn't" : "haven't"} ${verb.v1}`, `После haven't/hasn't глагол всегда в 3-й форме (${verb.v3}).`);
+      } else {
+        add(`${wrongHaveCap} ${sLow} ${verb.v3}`, `С «${subj.text}» вопрос в Present Perfect начинается с ${is3s ? 'Has' : 'Have'}.`);
+        add(`Did ${sLow} ${verb.v1}`, `Маркер указывает на результат к настоящему моменту — нужен Present Perfect (Have/Has + S + V3).`);
+        add(`${is3s ? 'Has' : 'Have'} ${sLow} ${verb.v1}`, `В Present Perfect основной глагол всегда в 3-й форме (${verb.v3}).`);
+      }
+    } else if (tenseId === 'pres_perf_cont') {
+      const wrongHave = is3s ? 'have' : 'has';
+      const wrongHaveCap = is3s ? 'Have' : 'Has';
+      const wrongHaveNeg = is3s ? "haven't" : "hasn't";
+      if (form === 'aff') {
+        add(`${wrongHave} been ${verb.ving}`, `С «${subj.text}» нужен ${is3s ? 'has' : 'have'}, а не ${wrongHave}.`);
+        add(`${is3s ? 'has' : 'have'} ${verb.ving}`, `Не забывайте been! Формула Present Perfect Continuous: have/has + been + V-ing.`);
+        add(`${is1s ? 'am' : (is3s ? 'is' : 'are')} ${verb.ving}`, `Когда указана длительность с прошлого до сейчас (for / since), используется Present Perfect Continuous, а не Present Continuous.`);
+      } else if (form === 'neg') {
+        add(`${wrongHaveNeg} been ${verb.ving}`, `С «${subj.text}» нужно ${is3s ? "hasn't" : "haven't"} been.`);
+        add(`${is3s ? "hasn't" : "haven't"} ${verb.ving}`, `Пропущено слово been: правильно ${is3s ? "hasn't" : "haven't"} been ${verb.ving}.`);
+        add(`${is1s ? 'am not' : (is3s ? "isn't" : "aren't")} ${verb.ving}`, `Из-за маркера длительности (for / since) нужен Present Perfect Continuous.`);
+      } else {
+        add(`${wrongHaveCap} ${sLow} been ${verb.ving}`, `С «${subj.text}» вопрос начинается с ${is3s ? 'Has' : 'Have'}.`);
+        add(`${is3s ? 'Has' : 'Have'} ${sLow} ${verb.ving}`, `В Present Perfect Continuous обязательно нужно been перед V-ing.`);
+        add(`${is1s ? 'Am' : (is3s ? 'Is' : 'Are')} ${sLow} ${verb.ving}`, `Для длительности с прошлого до сейчас (for / since) нужен Present Perfect Continuous.`);
+      }
+    } else if (tenseId === 'past_simple') {
+      if (form === 'aff') {
+        add(`${is3s ? 'has' : 'have'} ${verb.v3}`, `Есть точный маркер прошлого (yesterday / last week / ago) — нужен Past Simple, а не Present Perfect!`);
+        add(is3s ? verb.v3s : verb.v1, `Действие произошло в прошлом — нужна 2-я форма глагола (${verb.v2}), а не настоящее время.`);
+        add(`${(is1s || is3s) ? 'was' : 'were'} ${verb.ving}`, `Здесь просто завершённый факт в прошлом (Past Simple), а не процесс в конкретный час.`);
+      } else if (form === 'neg') {
+        add(`didn't ${verb.v2}`, `Классическая ловушка! После didn't глагол возвращается в начальную форму (V1): didn't ${verb.v1}.`);
+        add(`${is3s ? "doesn't" : "don't"} ${verb.v1}`, `Действие в прошлом — нужен вспомогательный didn't, а не don't/doesn't.`);
+        add(`${(is1s || is3s) ? "wasn't" : "weren't"} ${verb.v1}`, `С обычными глаголами в Past Simple отрицание строится через didn't + V1, а не через wasn't/weren't.`);
+      } else {
+        add(`Did ${sLow} ${verb.v2}`, `После Did основной глагол всегда стоит в начальной форме (V1): Did ${sLow} ${verb.v1}.`);
+        add(`${is3s ? 'Does' : 'Do'} ${sLow} ${verb.v1}`, `Речь о прошлом — вопрос должен начинаться с Did.`);
+        add(`${(is1s || is3s) ? 'Was' : 'Were'} ${sLow} ${verb.v1}`, `С обычными глаголами в Past Simple используется Did, а не Was/Were.`);
+      }
+    } else if (tenseId === 'past_cont') {
+      const rightBe = (is1s || is3s) ? 'was' : 'were';
+      const wrongBe = (is1s || is3s) ? 'were' : 'was';
+      const wrongBeCap = (is1s || is3s) ? 'Were' : 'Was';
+      const wrongBeNeg = (is1s || is3s) ? "weren't" : "wasn't";
+      if (form === 'aff') {
+        add(`${wrongBe} ${verb.ving}`, `С «${subj.text}» используется ${rightBe}, а не ${wrongBe} (was — для I/he/she/it, were — для you/we/they).`);
+        add(verb.v2, `Указан конкретный момент прошлого, в который шёл процесс — нужен Past Continuous (${rightBe} + V-ing).`);
+        add(`${is1s ? 'am' : (is3s ? 'is' : 'are')} ${verb.ving}`, `Речь о прошлом, поэтому вместо am/is/are нужен was/were.`);
+      } else if (form === 'neg') {
+        add(`${wrongBeNeg} ${verb.ving}`, `С «${subj.text}» нужно ${(is1s || is3s) ? "wasn't" : "weren't"}, а не ${wrongBeNeg}.`);
+        add(`didn't ${verb.ving}`, `В Past Continuous отрицание строится через wasn't / weren't, а не через didn't.`);
+        add(`didn't ${verb.v1}`, `Здесь речь о процессе в конкретный момент прошлого — нужен Past Continuous.`);
+      } else {
+        add(`${wrongBeCap} ${sLow} ${verb.ving}`, `С «${subj.text}» нужно ${(is1s || is3s) ? 'Was' : 'Were'}, а не ${wrongBeCap}.`);
+        add(`Did ${sLow} ${verb.ving}`, `Вопрос в Past Continuous начинается с Was/Were, а не с Did.`);
+        add(`Did ${sLow} ${verb.v1}`, `Вопрос о процессе в конкретный момент прошлого — нужен Past Continuous.`);
+      }
+    } else if (tenseId === 'past_perf') {
+      if (form === 'aff') {
+        add(verb.v2, `Действие завершилось ДО другого момента в прошлом (by the time / before) — нужен Past Perfect (had + V3).`);
+        add(`${is3s ? 'has' : 'have'} ${verb.v3}`, `Точка отсчёта находится в прошлом, поэтому вместо have/has нужен had.`);
+        if (verb.v2 !== verb.v3) add(`had ${verb.v2}`, `После had всегда идёт 3-я форма глагола (${verb.v3}), а не 2-я (${verb.v2}).`);
+        else add(`had ${verb.v1}`, `После had нужна 3-я форма (${verb.v3}), а не начальная.`);
+      } else if (form === 'neg') {
+        add(`didn't ${verb.v1}`, `Речь о результате ДО другого события в прошлом — нужен Past Perfect (hadn't + V3).`);
+        add(`${is3s ? "hasn't" : "haven't"} ${verb.v3}`, `Контекст полностью в прошлом, поэтому нужен hadn't, а не haven't/hasn't.`);
+        add(`hadn't ${verb.v1}`, `После hadn't глагол стоит в 3-й форме (${verb.v3}).`);
+      } else {
+        add(`Did ${sLow} ${verb.v1}`, `Вопрос о том, завершилось ли действие ДО момента в прошлом — нужен Past Perfect (Had + S + V3).`);
+        add(`${is3s ? 'Has' : 'Have'} ${sLow} ${verb.v3}`, `Контекст в прошлом, поэтому вопрос начинается с Had.`);
+        add(`Had ${sLow} ${verb.v1}`, `После Had нужна 3-я форма глагола (${verb.v3}).`);
+      }
+    } else if (tenseId === 'past_perf_cont') {
+      if (form === 'aff') {
+        add(`had ${verb.ving}`, `В Past Perfect Continuous нельзя пропускать been: had been + V-ing.`);
+        add(`${(is1s || is3s) ? 'was' : 'were'} ${verb.ving}`, `Когда указано, КАК ДОЛГО шёл процесс до другого события в прошлом, нужен Past Perfect Continuous (had been + V-ing).`);
+        add(`${is3s ? 'has' : 'have'} been ${verb.ving}`, `Событие привязано к прошлому (before...), поэтому нужен had been, а не have/has been.`);
+      } else if (form === 'neg') {
+        add(`hadn't ${verb.ving}`, `Пропущено been: правильно hadn't been ${verb.ving}.`);
+        add(`${(is1s || is3s) ? "wasn't" : "weren't"} ${verb.ving}`, `Здесь важна длительность ДО момента в прошлом — нужен Past Perfect Continuous.`);
+        add(`${is3s ? "hasn't" : "haven't"} been ${verb.ving}`, `Граница в прошлом — нужен hadn't been.`);
+      } else {
+        add(`Had ${sLow} ${verb.ving}`, `Не пропускайте been: Had ${sLow} been ${verb.ving}.`);
+        add(`${(is1s || is3s) ? 'Was' : 'Were'} ${sLow} ${verb.ving}`, `Есть длительность (for an hour) ДО прошлого события — нужен Past Perfect Continuous.`);
+        add(`${is3s ? 'Has' : 'Have'} ${sLow} been ${verb.ving}`, `Контекст в прошлом, поэтому нужен Had.`);
+      }
+    } else if (tenseId === 'fut_simple') {
+      if (form === 'aff') {
+        add(`will ${verb.v3s}`, `После will глагол всегда в начальной форме — окончание -s никогда не добавляется!`);
+        add(`will be ${verb.ving}`, `Здесь обычное будущее действие (без точного часа процесса) — достаточно Future Simple (will + V1).`);
+        add(`will to ${verb.v1}`, `После модального глагола will частица to не ставится.`);
+      } else if (form === 'neg') {
+        add(`doesn't ${verb.v1}`, `Речь о будущем (tomorrow / next week) — нужно won't + V1.`);
+        add(`won't ${verb.v3s}`, `После won't глагол всегда в начальной форме (без -s).`);
+        add(`won't be ${verb.ving}`, `Это простое будущее отрицание, а не процесс в конкретный час.`);
+      } else {
+        add(`Will ${sLow} ${verb.v3s}`, `После Will основной глагол всегда в начальной форме (V1).`);
+        add(`${is3s ? 'Does' : 'Do'} ${sLow} ${verb.v1}`, `Вопрос о будущем — начинаем с Will.`);
+        add(`Will ${sLow} be ${verb.ving}`, `Не указан точный момент процесса, поэтому нужен Future Simple.`);
+      }
+    } else if (tenseId === 'fut_cont') {
+      if (form === 'aff') {
+        add(`will ${verb.ving}`, `Пропущено be! Формула Future Continuous: will be + V-ing.`);
+        add(`will ${verb.v1}`, `Указан конкретный момент будущего (at this time tomorrow / at 8 p.m.), в который идёт процесс — нужен Future Continuous.`);
+        add(`will have ${verb.v3}`, `Здесь речь о процессе В момент, а не о результате К моменту — нужен Future Continuous.`);
+      } else if (form === 'neg') {
+        add(`won't ${verb.ving}`, `Не забывайте be: won't be ${verb.ving}.`);
+        add(`won't ${verb.v1}`, `Указан точный час процесса в будущем — нужен Future Continuous.`);
+        add(`${is1s ? 'am not' : (is3s ? "isn't" : "aren't")} ${verb.ving}`, `Речь о процессе в конкретный час будущего — лучше использовать won't be + V-ing.`);
+      } else {
+        add(`Will ${sLow} ${verb.ving}`, `Пропущено be: Will ${sLow} be ${verb.ving}.`);
+        add(`Will ${sLow} ${verb.v1}`, `Вопрос о процессе в конкретный момент будущего — нужен Future Continuous.`);
+        add(`Will ${sLow} have ${verb.v3}`, `Здесь спрашивают о процессе В указанное время, а не о завершении К нему.`);
+      }
+    } else if (tenseId === 'fut_perf') {
+      if (form === 'aff') {
+        add(`will has ${verb.v3}`, `После will всегда стоит have — даже для he/she/it! Никогда не will has.`);
+        add(`will ${verb.v1}`, `Предлог by + будущее время указывает на результат К дедлайну — нужен Future Perfect (will have + V3).`);
+        add(`will have ${verb.v1}`, `После will have глагол всегда в 3-й форме (${verb.v3}).`);
+      } else if (form === 'neg') {
+        add(`won't ${verb.v1}`, `Предлог by указывает на дедлайн в будущем — нужен Future Perfect (won't have + V3).`);
+        add(`won't has ${verb.v3}`, `После won't всегда have (не has).`);
+        add(`won't have ${verb.v1}`, `Нужна 3-я форма глагола (${verb.v3}) после won't have.`);
+      } else {
+        add(`Will ${sLow} ${verb.v1}`, `Предлог by + будущее время требует Future Perfect (Will + S + have + V3).`);
+        add(`Will ${sLow} has ${verb.v3}`, `После Will всегда используется have, даже с he/she/it.`);
+        add(`Will ${sLow} have ${verb.v1}`, `В Future Perfect глагол всегда в 3-й форме (${verb.v3}).`);
+      }
+    } else if (tenseId === 'fut_perf_cont') {
+      if (form === 'aff') {
+        add(`will have ${verb.ving}`, `Не теряйте been: формула will have been + V-ing.`);
+        add(`will be ${verb.ving}`, `Здесь есть пара «к моменту (by) + длительность (for)» — нужен Future Perfect Continuous.`);
+        add(`will has been ${verb.ving}`, `После will всегда have, даже для he/she/it.`);
+      } else if (form === 'neg') {
+        add(`won't have ${verb.ving}`, `Пропущено been: won't have been ${verb.ving}.`);
+        add(`won't be ${verb.ving}`, `Есть пара by + for (длительность к моменту) — нужен Future Perfect Continuous.`);
+        add(`won't have ${verb.v3}`, `Акцент на длительности процесса (for...), поэтому нужен Continuous (been + V-ing).`);
+      } else {
+        add(`Will ${sLow} have ${verb.ving}`, `Не забывайте been: Will ${sLow} have been ${verb.ving}.`);
+        add(`Will ${sLow} be ${verb.ving}`, `Есть пара by + for — нужен Future Perfect Continuous.`);
+        add(`Will ${sLow} have ${verb.v3}`, `Спрашивается о длительности процесса (for three hours), а не просто факте завершения.`);
+      }
+    }
+
+    // Fallback fillers if any edge case produced < 3 distractors
+    const fallbacks = [
+      { text: `${is3s ? 'is' : 'are'} ${verb.ving}`, reason: `Это форма Present Continuous, но контекст предложения требует ${TENSE_MAP[tenseId].name}.` },
+      { text: `will ${verb.v1}`, reason: `Это форма Future Simple, но контекст предложения требует ${TENSE_MAP[tenseId].name}.` },
+      { text: verb.v2, reason: `Это форма Past Simple, но здесь требуется ${TENSE_MAP[tenseId].name}.` },
+      { text: `had ${verb.v3}`, reason: `Это форма Past Perfect, но здесь требуется ${TENSE_MAP[tenseId].name}.` }
+    ];
+    for (const fb of fallbacks) {
+      if (pool.length >= 3) break;
+      add(fb.text, fb.reason);
+    }
+
+    return pool.slice(0, 3);
+  }
+
+  // Analyze free-text typed mistake to give a smart Russian diagnosis
+  function diagnoseTypedMistake(userRaw, q) {
+    const u = normalizeAns(userRaw);
+    const t = q.tenseId;
+    const is3s = q.subj.person === '3s';
+    const v = q.verb;
+
+    // Check if user's typed answer matches one of our known diagnostic distractors!
+    for (const d of q.distractors) {
+      if (normalizeAns(d.text) === u) return d.reason;
+    }
+
+    if (t === 'past_simple' && (q.form === 'neg' || q.form === 'q') && u.includes(v.v2) && v.v2 !== v.v1) {
+      return `После did / didn't глагол всегда возвращается в начальную форму (${v.v1}), а не во вторую (${v.v2}).`;
+    }
+    if (t === 'pres_simple' && is3s && q.form === 'aff' && u === v.v1) {
+      return `С «${q.subj.text}» (he/she/it) в Present Simple нужно добавить окончание -s/-es → ${v.v3s}.`;
+    }
+    if (t === 'pres_simple' && is3s && (q.form === 'neg' || q.form === 'q') && u.includes(v.v3s)) {
+      return `Когда в предложении уже есть does / doesn't, окончание -s у основного глагола убирается (${v.v1}).`;
+    }
+    if (t.includes('perf_cont') && !u.includes('been')) {
+      return `В временах Perfect Continuous обязательно нужно слово been перед глаголом с -ing.`;
+    }
+    if (t.startsWith('fut_perf') && u.includes('will has')) {
+      return `После will всегда ставится have, даже с he/she/it (will have, а не will has).`;
+    }
+    if (t === 'fut_cont' && !u.includes('be')) {
+      return `В Future Continuous не забывайте слово be между will и глаголом с -ing (will be ${v.ving}).`;
+    }
+    return `Ваш ответ «${userRaw.trim()}» отличается от правильной формы «${q.correct}». Обратите внимание на вспомогательный глагол, лицо подлежащего («${q.subj.text}») и форму глагола в ${TENSE_MAP[t].name}.`;
+  }
+
+  function normalizeAns(str) {
+    return String(str || '')
+      .trim()
+      .toLowerCase()
+      .replace(/’/g, "'")
+      .replace(/\s+/g, ' ');
+  }
+
+  /* ============================================================================
+     4. APPLICATION STATE & LOCALSTORAGE PERSISTENCE
+     ============================================================================ */
+  const STORAGE_KEY = 'tenselab_state_v1';
+
+  const DEFAULT_PERSISTED = {
+    totalAnswered: 0,
+    totalCorrect: 0,
+    streak: 0,
+    bestStreak: 0,
+    seenKeys: [],
+    tenseStats: {}, // { tenseId: { attempts, correct } }
+    mistakes: []    // Array of saved question snapshots
+  };
+
+  function loadPersisted() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return structuredCloneSafe(DEFAULT_PERSISTED);
+      const parsed = JSON.parse(raw);
+      return {
+        ...structuredCloneSafe(DEFAULT_PERSISTED),
+        ...parsed,
+        tenseStats: parsed.tenseStats || {},
+        seenKeys: Array.isArray(parsed.seenKeys) ? parsed.seenKeys : [],
+        mistakes: Array.isArray(parsed.mistakes) ? parsed.mistakes : []
+      };
+    } catch (e) {
+      return structuredCloneSafe(DEFAULT_PERSISTED);
+    }
+  }
+
+  function savePersisted() {
+    try {
+      // Cap seenKeys to last 1500 so storage stays tiny
+      if (state.data.seenKeys.length > 1500) {
+        state.data.seenKeys = state.data.seenKeys.slice(-1500);
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state.data));
+    } catch (e) {
+      // Safe no-op in restricted storage environments
+    }
+  }
+
+  function structuredCloneSafe(obj) {
+    return JSON.parse(JSON.stringify(obj));
+  }
+
+  const state = {
+    tab: 'practice',
+    preset: 'all',
+    selectedTenses: TENSES.map(t => t.id),
+    customGridOpen: false,
+    formFilter: 'all',   // 'all' | 'aff' | 'neg' | 'q'
+    subjFilter: 'all',   // 'all' | '3s' | 'other'
+    inputMode: 'mc',     // 'mc' | 'type' | 'mix'
+    activeTheoryTense: 'pres_simple',
+    currentQuestion: null,
+    answered: false,
+    data: loadPersisted()
+  };
+
+  /* ============================================================================
+     5. SMART NON-REPEATING QUESTION GENERATOR
+     ============================================================================ */
+  function pickRandom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function generateQuestion() {
+    // Special Mode: Mistakes Review
+    if (state.preset === 'mistakes') {
+      if (state.data.mistakes.length > 0) {
+        const saved = state.data.mistakes[0];
+        const q = structuredCloneSafe(saved);
+        q.isReview = true;
+        q.renderMode = state.inputMode === 'mix' ? (Math.random() < 0.5 ? 'mc' : 'type') : state.inputMode;
+        q.options = shuffle([{ text: q.correct, isCorrect: true }, ...q.distractors.map(d => ({ text: d.text, isCorrect: false, reason: d.reason }))]);
+        return q;
+      } else {
+        showToast('Все ошибки разобраны! Возвращаем режим «Все 12 времён».');
+        applyPreset('all', false);
+      }
+    }
+
+    const poolTenses = state.selectedTenses.length > 0 ? state.selectedTenses : TENSES.map(t => t.id);
+    const poolForms = state.formFilter === 'all' ? ['aff', 'neg', 'q'] : [state.formFilter];
+    const poolSubjs = state.subjFilter === 'all'
+      ? SUBJECTS
+      : SUBJECTS.filter(s => s.group === state.subjFilter);
+
+    const seenSet = new Set(state.data.seenKeys);
+
+    // Balance selection: slightly prefer tenses with fewer attempts in this pool
+    let chosen = null;
+    for (let attempt = 0; attempt < 60; attempt++) {
+      // Pick tense (favoring less-practiced tenses on early attempts)
+      let tenseId;
+      if (attempt < 20 && poolTenses.length > 1) {
+        const sorted = [...poolTenses].sort((a, b) => {
+          const ca = (state.data.tenseStats[a]?.attempts || 0) + Math.random() * 2;
+          const cb = (state.data.tenseStats[b]?.attempts || 0) + Math.random() * 2;
+          return ca - cb;
+        });
+        tenseId = sorted[0];
+      } else {
+        tenseId = pickRandom(poolTenses);
+      }
+
+      const form = pickRandom(poolForms);
+      const subj = pickRandom(poolSubjs);
+      const verbPool = subj.isIt ? IT_VERBS : VERBS;
+      const verb = pickRandom(verbPool);
+      const obj = pickRandom(verb.objs);
+      const frames = FRAMES[tenseId][form];
+      const frame = pickRandom(frames);
+
+      const key = `${tenseId}|${form}|${subj.person}|${verb.v1}|${obj}`;
+      if (!seenSet.has(key) || attempt === 59) {
+        chosen = { key, tenseId, form, subj, verb, obj, frame };
+        break;
+      }
+    }
+
+    const { key, tenseId, form, subj, verb, obj, frame } = chosen;
+    const conj = conjugate(tenseId, form, subj, verb);
+    const distractors = buildDistractors(tenseId, form, subj, verb, conj.main);
+
+    const sentenceWithBlank = frame.tpl
+      .replace('{S}', subj.text)
+      .replace('{s}', subj.lower)
+      .replace('{OBJ}', obj);
+
+    const fullSentence = sentenceWithBlank.replace('{BLANK}', conj.main);
+
+    let cue = '';
+    if (form === 'aff') cue = `${verb.v1} (${verb.ruInf})`;
+    else if (form === 'neg') cue = `not / ${verb.v1} (${verb.ruInf})`;
+    else cue = `${subj.text} / ${verb.v1} (${verb.ruInf})`;
+
+    const renderMode = state.inputMode === 'mix'
+      ? (Math.random() < 0.55 ? 'mc' : 'type')
+      : state.inputMode;
+
+    const options = shuffle([
+      { text: conj.main, isCorrect: true },
+      ...distractors.map(d => ({ text: d.text, isCorrect: false, reason: d.reason }))
+    ]);
+
+    return {
+      key,
+      tenseId,
+      form,
+      subj,
+      verb,
+      obj,
+      marker: frame.marker,
+      ruHint: frame.ruHint,
+      sentenceWithBlank,
+      fullSentence,
+      cue,
+      correct: conj.main,
+      alts: conj.alts,
+      distractors,
+      options,
+      renderMode,
+      isReview: false
+    };
+  }
+
+  /* ============================================================================
+     6. RENDERING: PRACTICE VIEW
+     ============================================================================ */
+  function renderPresetButtons() {
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+      const isActive = btn.dataset.preset === state.preset;
+      btn.className = 'preset-btn px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all ' + (
+        btn.dataset.preset === 'mistakes'
+          ? (isActive ? 'bg-rose-600 text-white border-rose-600 shadow-sm flex items-center gap-1.5' : 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100 flex items-center gap-1.5')
+          : (isActive ? 'bg-slate-900 text-white border-slate-900 shadow-sm' : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-50')
+      );
+    });
+
+    const mCount = state.data.mistakes.length;
+    const mBtn = document.getElementById('btn-preset-mistakes');
+    document.getElementById('preset-mistakes-count').textContent = mCount;
+    if (mCount > 0) mBtn.classList.remove('hidden');
+    else mBtn.classList.add('hidden');
+
+    // Scope Badge
+    const badge = document.getElementById('active-scope-badge');
+    if (state.preset === 'mistakes') {
+      badge.textContent = `Работа над ошибками (${mCount})`;
+      badge.className = 'text-xs font-semibold px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 border border-rose-200';
+    } else if (state.selectedTenses.length === 1) {
+      const t = TENSE_MAP[state.selectedTenses[0]];
+      const c = GROUP_COLORS[t.group];
+      badge.textContent = t.name;
+      badge.className = `text-xs font-semibold px-2.5 py-1 rounded-full ${c.bg} ${c.text} border ${c.border}`;
+    } else if (state.selectedTenses.length === 12) {
+      badge.textContent = 'Все 12 времён';
+      badge.className = 'text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100';
+    } else {
+      badge.textContent = `Выбрано времён: ${state.selectedTenses.length}`;
+      badge.className = 'text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200';
+    }
+  }
+
+  function renderCustomTenseGrid() {
+    const grid = document.getElementById('custom-tense-grid');
+    grid.innerHTML = TENSES.map(t => {
+      const active = state.selectedTenses.includes(t.id);
+      const c = GROUP_COLORS[t.group];
+      return `
+        <button data-toggle-tense="${t.id}" class="text-left px-3 py-2 rounded-xl border text-xs font-semibold transition-all flex items-center justify-between gap-1.5 ${
+          active ? `${c.bg} ${c.border} ${c.text} ring-1 ${c.ring}/30` : 'bg-white border-slate-200 text-slate-400 hover:border-slate-300'
+        }">
+          <span class="truncate">${t.name}</span>
+          <span class="w-4 h-4 rounded-md flex items-center justify-center shrink-0 ${active ? c.solid : 'bg-slate-100 text-slate-300'}">
+            ${active ? '✓' : ''}
+          </span>
+        </button>
+      `;
+    }).join('');
+  }
+
+  function renderSecondaryFilters() {
+    document.querySelectorAll('.filter-form-btn').forEach(btn => {
+      const active = btn.dataset.form === state.formFilter;
+      btn.className = 'filter-form-btn py-1 text-xs font-semibold rounded-lg transition-all ' +
+        (active ? 'bg-white text-indigo-700 shadow-xs' : 'text-slate-500 hover:text-slate-800');
+    });
+    document.querySelectorAll('.filter-subj-btn').forEach(btn => {
+      const active = btn.dataset.subj === state.subjFilter;
+      btn.className = 'filter-subj-btn py-1 text-xs font-semibold rounded-lg transition-all ' +
+        (active ? 'bg-white text-indigo-700 shadow-xs' : 'text-slate-500 hover:text-slate-800');
+    });
+    document.querySelectorAll('.filter-mode-btn').forEach(btn => {
+      const active = btn.dataset.mode === state.inputMode;
+      btn.className = 'filter-mode-btn py-1 text-xs font-semibold rounded-lg transition-all ' +
+        (active ? 'bg-white text-indigo-700 shadow-xs' : 'text-slate-500 hover:text-slate-800');
+    });
+  }
+
+  function renderStatsBar() {
+    const d = state.data;
+    document.getElementById('stat-streak').textContent = d.streak;
+    document.getElementById('stat-accuracy').textContent = d.totalAnswered > 0
+      ? Math.round((d.totalCorrect / d.totalAnswered) * 100) + '%'
+      : '—';
+    document.getElementById('stat-unique').textContent = d.seenKeys.length;
+    document.getElementById('stat-mistakes-count').textContent = d.mistakes.length;
+
+    const navBadge = document.getElementById('nav-mistakes-badge');
+    if (d.mistakes.length > 0) {
+      navBadge.textContent = d.mistakes.length;
+      navBadge.classList.remove('hidden');
+    } else {
+      navBadge.classList.add('hidden');
+    }
+  }
+
+  function renderQuestion() {
+    const q = state.currentQuestion;
+    if (!q) return;
+    state.answered = false;
+
+    const formLabels = {
+      aff: { text: 'Утверждение (+)', cls: 'bg-emerald-50 text-emerald-700 border border-emerald-200' },
+      neg: { text: 'Отрицание (−)', cls: 'bg-rose-50 text-rose-700 border border-rose-200' },
+      q:   { text: 'Вопрос (?)', cls: 'bg-sky-50 text-sky-700 border border-sky-200' }
+    };
+    const fl = formLabels[q.form];
+    const formBadge = document.getElementById('q-form-badge');
+    formBadge.textContent = fl.text;
+    formBadge.className = `text-xs font-bold px-2.5 py-1 rounded-lg ${fl.cls}`;
+
+    // If only 1 tense is selected, show its name; if multiple, let user recognize the tense from context!
+    const tenseHintBadge = document.getElementById('q-tense-hint-badge');
+    if (state.selectedTenses.length === 1 && state.preset !== 'mistakes') {
+      const t = TENSE_MAP[q.tenseId];
+      const c = GROUP_COLORS[t.group];
+      tenseHintBadge.textContent = t.name;
+      tenseHintBadge.className = `text-xs font-semibold px-2.5 py-1 rounded-lg ${c.bg} ${c.text}`;
+    } else {
+      tenseHintBadge.textContent = 'Определите время по контексту';
+      tenseHintBadge.className = 'text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600';
+    }
+
+    const revBadge = document.getElementById('q-review-badge');
+    if (q.isReview) revBadge.classList.remove('hidden');
+    else revBadge.classList.add('hidden');
+
+    document.getElementById('q-ru-context').textContent = `Контекст: ${q.ruHint}`;
+    document.getElementById('q-sentence').innerHTML = q.sentenceWithBlank.replace(
+      '{BLANK}',
+      `<span id="q-blank-slot" class="inline-block min-w-[110px] border-b-2 border-indigo-400 bg-indigo-50/70 text-indigo-700 px-3 py-0.5 rounded-lg mx-0.5 text-center">___</span>`
+    );
+    document.getElementById('q-cue').textContent = q.cue;
+
+    // Reset Hint & Feedback
+    document.getElementById('q-hint-box').classList.add('hidden');
+    document.getElementById('feedback-box').classList.add('hidden');
+
+    const mcEl = document.getElementById('mc-container');
+    const typeEl = document.getElementById('type-container');
+
+    if (q.renderMode === 'mc') {
+      mcEl.classList.remove('hidden');
+      typeEl.classList.add('hidden');
+      mcEl.innerHTML = q.options.map((opt, idx) => `
+        <button data-opt-idx="${idx}" class="option-btn group text-left px-4 py-3.5 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 hover:bg-indigo-50/30 font-semibold text-slate-800 flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg bg-slate-100 group-hover:bg-indigo-100 group-hover:text-indigo-700 text-slate-500 text-xs font-bold flex items-center justify-center shrink-0 transition-colors">${idx + 1}</span>
+          <span class="text-base">${escapeHtml(opt.text)}</span>
+        </button>
+      `).join('');
+    } else {
+      mcEl.classList.add('hidden');
+      typeEl.classList.remove('hidden');
+      const inp = document.getElementById('type-input');
+      inp.value = '';
+      inp.disabled = false;
+      inp.className = 'flex-1 px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none text-base font-semibold text-slate-900 transition-all';
+      document.getElementById('btn-submit-type').disabled = false;
+      setTimeout(() => inp.focus(), 40);
+    }
+
+    lucide.createIcons();
+  }
+
+  function handleAnswer(isCorrect, userAnswerText, chosenReason) {
+    if (state.answered) return;
+    state.answered = true;
+    const q = state.currentQuestion;
+    const tense = TENSE_MAP[q.tenseId];
+
+    // Update persisted stats
+    const d = state.data;
+    d.totalAnswered += 1;
+    if (!d.seenKeys.includes(q.key)) d.seenKeys.push(q.key);
+    if (!d.tenseStats[q.tenseId]) d.tenseStats[q.tenseId] = { attempts: 0, correct: 0 };
+    d.tenseStats[q.tenseId].attempts += 1;
+
+    if (isCorrect) {
+      d.totalCorrect += 1;
+      d.tenseStats[q.tenseId].correct += 1;
+      d.streak += 1;
+      if (d.streak > d.bestStreak) d.bestStreak = d.streak;
+      // Remove from mistakes queue if present
+      d.mistakes = d.mistakes.filter(m => m.key !== q.key);
+    } else {
+      d.streak = 0;
+      // Save to mistakes queue (avoid duplicates)
+      const exists = d.mistakes.some(m => m.key === q.key);
+      if (!exists) {
+        d.mistakes.unshift({
+          key: q.key,
+          tenseId: q.tenseId,
+          form: q.form,
+          subj: q.subj,
+          verb: q.verb,
+          obj: q.obj,
+          marker: q.marker,
+          ruHint: q.ruHint,
+          sentenceWithBlank: q.sentenceWithBlank,
+          fullSentence: q.fullSentence,
+          cue: q.cue,
+          correct: q.correct,
+          alts: q.alts,
+          distractors: q.distractors,
+          lastWrongAnswer: userAnswerText
+        });
+      }
+    }
+    savePersisted();
+    renderStatsBar();
+    renderPresetButtons();
+
+    // Update blank slot in sentence
+    const slot = document.getElementById('q-blank-slot');
+    if (slot) {
+      slot.textContent = q.correct;
+      slot.className = `inline-block px-2.5 py-0.5 rounded-lg mx-0.5 font-extrabold ${
+        isCorrect ? 'bg-emerald-100 text-emerald-800 border-b-2 border-emerald-500' : 'bg-emerald-100 text-emerald-800 border-b-2 border-emerald-500'
+      }`;
+    }
+
+    // Highlight MC options or Type input
+    if (q.renderMode === 'mc') {
+      document.querySelectorAll('#mc-container button').forEach(btn => {
+        const idx = Number(btn.dataset.optIdx);
+        const opt = q.options[idx];
+        btn.disabled = true;
+        if (opt.isCorrect) {
+          btn.className = 'option-btn text-left px-4 py-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-50 font-semibold text-emerald-900 flex items-center gap-3';
+        } else if (opt.text === userAnswerText && !isCorrect) {
+          btn.className = 'option-btn text-left px-4 py-3.5 rounded-xl border-2 border-rose-400 bg-rose-50 font-semibold text-rose-900 flex items-center gap-3';
+        } else {
+          btn.className = 'option-btn text-left px-4 py-3.5 rounded-xl border-2 border-slate-100 bg-slate-50/50 font-medium text-slate-400 flex items-center gap-3 opacity-60';
+        }
+      });
+    } else {
+      const inp = document.getElementById('type-input');
+      inp.disabled = true;
+      document.getElementById('btn-submit-type').disabled = true;
+      inp.className = 'flex-1 px-4 py-3 rounded-xl border-2 outline-none text-base font-semibold transition-all ' + (
+        isCorrect ? 'border-emerald-500 bg-emerald-50 text-emerald-900' : 'border-rose-400 bg-rose-50 text-rose-900'
+      );
+    }
+
+    // Render Feedback Box
+    const fbBox = document.getElementById('feedback-box');
+    const fbIcon = document.getElementById('fb-icon-wrap');
+    const fbTitle = document.getElementById('fb-title');
+    const fbFull = document.getElementById('fb-full-sentence');
+    const diagWrap = document.getElementById('fb-diagnosis-wrap');
+
+    fbBox.classList.remove('hidden');
+    if (isCorrect) {
+      fbBox.className = 'rounded-2xl border border-emerald-200 bg-emerald-50/70 p-4 sm:p-5 space-y-3.5 fade-in';
+      fbIcon.className = 'w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-0.5';
+      fbIcon.innerHTML = '<i data-lucide="check" class="w-5 h-5"></i>';
+      fbTitle.textContent = q.isReview ? 'Отлично! Ошибка отработана и снята' : 'Верно!';
+      fbTitle.className = 'font-bold text-base text-emerald-900';
+      fbFull.textContent = q.fullSentence;
+      fbFull.className = 'text-sm font-semibold text-emerald-800 mt-0.5';
+      diagWrap.classList.add('hidden');
+    } else {
+      fbBox.className = 'rounded-2xl border border-rose-200 bg-rose-50/70 p-4 sm:p-5 space-y-3.5 fade-in';
+      fbIcon.className = 'w-9 h-9 rounded-xl bg-rose-600 text-white flex items-center justify-center shrink-0 mt-0.5';
+      fbIcon.innerHTML = '<i data-lucide="x" class="w-5 h-5"></i>';
+      fbTitle.textContent = `Не совсем. Правильный ответ: ${q.correct}`;
+      fbTitle.className = 'font-bold text-base text-rose-900';
+      fbFull.textContent = q.fullSentence;
+      fbFull.className = 'text-sm font-semibold text-slate-700 mt-0.5';
+      diagWrap.classList.remove('hidden');
+      document.getElementById('fb-diagnosis-text').textContent = chosenReason || diagnoseTypedMistake(userAnswerText, q);
+    }
+
+    // Rule & Formula summary
+    document.getElementById('fb-tense-name').textContent = `${tense.name} — ${tense.shortRu}`;
+    const matchingFormulas = tense.formulas[q.form];
+    const formulaText = matchingFormulas.map(f => `${f.subj}: ${f.form}`).join('  |  ');
+    document.getElementById('fb-formula-pill').textContent = formulaText;
+    document.getElementById('fb-rule-text').textContent = tense.essence;
+    document.getElementById('fb-marker-text').textContent = `Маркер в предложении: «${q.marker}»`;
+
+    lucide.createIcons();
+  }
+
+  function loadNextQuestion() {
+    state.currentQuestion = generateQuestion();
+    renderQuestion();
+  }
+
+  /* ============================================================================
+     7. RENDERING: THEORY VIEW (3x4 MATRIX + SVG TIMELINE + DETAIL CARD)
+     ============================================================================ */
+  function buildTimelineSVG(type, colorHex) {
+    // Simple, crisp 300x58 visual timeline: PAST --- NOW --- FUTURE
+    let graphic = '';
+    if (type === 'repeat_now') {
+      graphic = `
+        <circle cx="85" cy="26" r="5" fill="${colorHex}" opacity="0.45"/>
+        <circle cx="118" cy="26" r="5" fill="${colorHex}" opacity="0.7"/>
+        <circle cx="150" cy="26" r="6" fill="${colorHex}"/>
+        <circle cx="182" cy="26" r="5" fill="${colorHex}" opacity="0.7"/>
+        <circle cx="215" cy="26" r="5" fill="${colorHex}" opacity="0.45"/>`;
+    } else if (type === 'dot_now_wave') {
+      graphic = `
+        <path d="M126 26 Q134 14 142 26 T158 26 T174 26" fill="none" stroke="${colorHex}" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="150" cy="26" r="5" fill="${colorHex}"/>`;
+    } else if (type === 'past_to_now_result') {
+      graphic = `
+        <path d="M85 26 C105 8, 130 8, 147 23" fill="none" stroke="${colorHex}" stroke-width="3" stroke-dasharray="4 3"/>
+        <circle cx="85" cy="26" r="4.5" fill="${colorHex}" opacity="0.5"/>
+        <circle cx="150" cy="26" r="6.5" fill="${colorHex}"/>`;
+    } else if (type === 'past_to_now_wave') {
+      graphic = `
+        <path d="M80 26 Q90 15 100 26 T120 26 T140 26 T152 26" fill="none" stroke="${colorHex}" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="150" cy="26" r="5.5" fill="${colorHex}"/>`;
+    } else if (type === 'dot_past') {
+      graphic = `<circle cx="90" cy="26" r="7" fill="${colorHex}"/>`;
+    } else if (type === 'wave_past') {
+      graphic = `
+        <path d="M62 26 Q72 14 82 26 T102 26 T122 26" fill="none" stroke="${colorHex}" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="92" cy="26" r="4.5" fill="#0f172a"/>`;
+    } else if (type === 'before_past') {
+      graphic = `
+        <circle cx="58" cy="26" r="6.5" fill="${colorHex}"/>
+        <path d="M66 26 L98 26" stroke="${colorHex}" stroke-width="2.5" stroke-dasharray="3 3"/>
+        <circle cx="105" cy="26" r="4.5" fill="#64748b"/>`;
+    } else if (type === 'wave_before_past') {
+      graphic = `
+        <path d="M45 26 Q55 15 65 26 T85 26 T102 26" fill="none" stroke="${colorHex}" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="106" cy="26" r="5" fill="#64748b"/>`;
+    } else if (type === 'dot_future') {
+      graphic = `<circle cx="215" cy="26" r="7" fill="${colorHex}"/>`;
+    } else if (type === 'wave_future') {
+      graphic = `
+        <path d="M185 26 Q195 14 205 26 T225 26 T245 26" fill="none" stroke="${colorHex}" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="215" cy="26" r="4.5" fill="#0f172a"/>`;
+    } else if (type === 'before_future') {
+      graphic = `
+        <path d="M170 26 C188 10, 212 10, 228 24" fill="none" stroke="${colorHex}" stroke-width="3" stroke-dasharray="4 3"/>
+        <circle cx="232" cy="26" r="6" fill="${colorHex}"/>`;
+    } else {
+      graphic = `
+        <path d="M160 26 Q170 15 180 26 T200 26 T220 26 T234 26" fill="none" stroke="${colorHex}" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="236" cy="26" r="5.5" fill="${colorHex}"/>`;
+    }
+
+    return `
+      <svg viewBox="0 0 300 58" class="w-full max-w-[320px] h-auto" aria-label="Шкала времени">
+        <line x1="20" y1="26" x2="280" y2="26" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round"/>
+        <line x1="150" y1="12" x2="150" y2="40" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3 2"/>
+        ${graphic}
+        <text x="24" y="50" font-size="10" font-weight="600" fill="#94a3b8">PAST</text>
+        <text x="150" y="50" font-size="10" font-weight="700" fill="#475569" text-anchor="middle">NOW</text>
+        <text x="276" y="50" font-size="10" font-weight="600" fill="#94a3b8" text-anchor="end">FUTURE</text>
+      </svg>
+    `;
+  }
+
+  function renderTheoryView() {
+    const matrix = document.getElementById('theory-matrix');
+    matrix.innerHTML = TENSES.map(t => {
+      const c = GROUP_COLORS[t.group];
+      const active = t.id === state.activeTheoryTense;
+      return `
+        <button data-theory-tense="${t.id}" class="text-left p-3 rounded-xl border transition-all ${
+          active
+            ? `${c.bg} ${c.border} ring-2 ${c.ring} shadow-xs`
+            : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/70'
+        }">
+          <div class="text-xs font-extrabold ${active ? c.text : 'text-slate-800'}">${t.name}</div>
+          <div class="text-[11px] text-slate-500 mt-1 leading-snug">${t.shortRu}</div>
+        </button>
+      `;
+    }).join('');
+
+    const t = TENSE_MAP[state.activeTheoryTense];
+    const c = GROUP_COLORS[t.group];
+    const detail = document.getElementById('theory-detail-card');
+
+    const renderFormulaRows = (rows) => rows.map(r => `
+      <div class="flex flex-wrap items-center justify-between gap-2 py-1.5 border-b border-slate-100 last:border-0 text-xs sm:text-sm">
+        <span class="text-slate-500 font-medium">${r.subj}</span>
+        <span class="font-mono font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded-md">${r.form}</span>
+      </div>
+    `).join('');
+
+    detail.innerHTML = `
+      <div class="flex flex-wrap items-start justify-between gap-4 border-b border-slate-100 pb-5">
+        <div class="space-y-1.5 max-w-xl">
+          <span class="inline-block text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${c.bg} ${c.text} border ${c.border}">${t.group} · ${t.aspect.replace('_', ' ')}</span>
+          <h3 class="text-2xl font-extrabold text-slate-900">${t.name}</h3>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">${t.essence}</p>
+        </div>
+        <div class="flex flex-col items-start sm:items-end gap-3">
+          ${buildTimelineSVG(t.timelineType, c.hex)}
+          <button id="btn-train-this-tense" data-train-tense="${t.id}" class="px-4 py-2 rounded-xl ${c.solid} hover:opacity-95 text-sm font-semibold shadow-sm transition-all flex items-center gap-2">
+            <i data-lucide="zap" class="w-4 h-4"></i>
+            <span>Тренировать ${t.name}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Formulas Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="rounded-xl border border-emerald-200/80 bg-emerald-50/30 p-4 space-y-2">
+          <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-700">Утверждение (+)</div>
+          <div>${renderFormulaRows(t.formulas.aff)}</div>
+          <div class="pt-2 text-xs text-slate-700 bg-white/80 rounded-lg p-2.5 border border-emerald-100">
+            <div class="font-bold text-slate-900">${t.examples.aff.en}</div>
+            <div class="text-slate-500 mt-0.5">${t.examples.aff.ru}</div>
+          </div>
+        </div>
+        <div class="rounded-xl border border-rose-200/80 bg-rose-50/30 p-4 space-y-2">
+          <div class="text-xs font-extrabold uppercase tracking-wider text-rose-700">Отрицание (−)</div>
+          <div>${renderFormulaRows(t.formulas.neg)}</div>
+          <div class="pt-2 text-xs text-slate-700 bg-white/80 rounded-lg p-2.5 border border-rose-100">
+            <div class="font-bold text-slate-900">${t.examples.neg.en}</div>
+            <div class="text-slate-500 mt-0.5">${t.examples.neg.ru}</div>
+          </div>
+        </div>
+        <div class="rounded-xl border border-sky-200/80 bg-sky-50/30 p-4 space-y-2">
+          <div class="text-xs font-extrabold uppercase tracking-wider text-sky-700">Вопрос (?)</div>
+          <div>${renderFormulaRows(t.formulas.q)}</div>
+          <div class="pt-2 text-xs text-slate-700 bg-white/80 rounded-lg p-2.5 border border-sky-100">
+            <div class="font-bold text-slate-900">${t.examples.q.en}</div>
+            <div class="text-slate-500 mt-0.5">${t.examples.q.ru}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Markers & Traps -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-xl bg-slate-50 border border-slate-200/70 p-4 space-y-2.5">
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+            <i data-lucide="tag" class="w-3.5 h-3.5"></i>
+            <span>Слова-маркеры</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            ${t.markers.map(m => `<span class="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-xs font-semibold text-slate-700">${m}</span>`).join('')}
+          </div>
+        </div>
+        <div class="rounded-xl bg-amber-50/60 border border-amber-200/80 p-4 space-y-2">
+          <div class="text-xs font-bold uppercase tracking-wider text-amber-700 flex items-center gap-1.5">
+            <i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i>
+            <span>Частые ловушки</span>
+          </div>
+          <ul class="space-y-1.5 text-xs sm:text-sm text-amber-950 list-disc pl-4">
+            ${t.traps.map(tr => `<li>${tr}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    `;
+
+    lucide.createIcons();
+  }
+
+  /* ============================================================================
+     8. RENDERING: PROGRESS & MISTAKES VIEW
+     ============================================================================ */
+  function renderProgressView() {
+    const d = state.data;
+    document.getElementById('prog-total').textContent = d.totalAnswered;
+    document.getElementById('prog-accuracy').textContent = d.totalAnswered > 0
+      ? Math.round((d.totalCorrect / d.totalAnswered) * 100) + '%'
+      : '—';
+    document.getElementById('prog-best-streak').textContent = d.bestStreak;
+    document.getElementById('prog-mistakes-cnt').textContent = d.mistakes.length;
+
+    const grid = document.getElementById('prog-tense-grid');
+    grid.innerHTML = TENSES.map(t => {
+      const st = d.tenseStats[t.id] || { attempts: 0, correct: 0 };
+      const pct = st.attempts > 0 ? Math.round((st.correct / st.attempts) * 100) : 0;
+      const c = GROUP_COLORS[t.group];
+      return `
+        <button data-drill-tense="${t.id}" class="text-left p-3.5 rounded-xl border border-slate-200 hover:border-indigo-300 hover:bg-slate-50/60 transition-all space-y-2">
+          <div class="flex items-center justify-between gap-2">
+            <span class="font-bold text-sm text-slate-900">${t.name}</span>
+            <span class="text-xs font-bold ${st.attempts ? c.text : 'text-slate-400'}">${st.attempts ? pct + '%' : 'Нет данных'}</span>
+          </div>
+          <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div class="h-full ${c.bar} rounded-full transition-all" style="width: ${pct}%"></div>
+          </div>
+          <div class="flex items-center justify-between text-[11px] text-slate-500">
+            <span>Ответов: ${st.attempts} (${st.correct} верно)</span>
+            <span class="font-semibold text-indigo-600">Тренировать →</span>
+          </div>
+        </button>
+      `;
+    }).join('');
+
+    const mList = document.getElementById('mistakes-list');
+    const mBtn = document.getElementById('btn-practice-mistakes');
+    if (d.mistakes.length === 0) {
+      mBtn.classList.add('hidden');
+      mList.innerHTML = `
+        <div class="text-center py-8 px-4 rounded-xl bg-slate-50 border border-dashed border-slate-200 text-sm text-slate-500">
+          Пока нет неразобранных ошибок — отличный результат!
+        </div>
+      `;
+    } else {
+      mBtn.classList.remove('hidden');
+      mList.innerHTML = d.mistakes.map(m => {
+        const t = TENSE_MAP[m.tenseId];
+        const c = GROUP_COLORS[t.group];
+        return `
+          <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50/40 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div class="space-y-1">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded-md ${c.bg} ${c.text}">${t.name}</span>
+                <span class="text-xs text-slate-400">Маркер: ${m.marker}</span>
+              </div>
+              <div class="text-sm font-bold text-slate-900">${escapeHtml(m.fullSentence)}</div>
+              <div class="text-xs text-slate-500">
+                Ваш ответ: <span class="text-rose-600 font-semibold line-through">${escapeHtml(m.lastWrongAnswer || '—')}</span>
+                · Верно: <span class="text-emerald-700 font-semibold">${escapeHtml(m.correct)}</span>
+              </div>
+            </div>
+            <button data-goto-theory="${m.tenseId}" class="text-xs font-semibold text-indigo-600 hover:text-indigo-800 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-indigo-200 shrink-0 self-start sm:self-center">
+              Открыть правило
+            </button>
+          </div>
+        `;
+      }).join('');
+    }
+  }
+
+  /* ============================================================================
+     9. ACTIONS, NAVIGATION & EVENT LISTENERS
+     ============================================================================ */
+  function switchTab(tabName) {
+    state.tab = tabName;
+    ['practice', 'theory', 'progress'].forEach(t => {
+      document.getElementById(`view-${t}`).classList.toggle('hidden', t !== tabName);
+      const btn = document.getElementById(`tab-${t}`);
+      btn.className = 'nav-tab px-3 sm:px-4 py-1.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-1.5 relative ' + (
+        t === tabName ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'
+      );
+    });
+    if (tabName === 'theory') renderTheoryView();
+    if (tabName === 'progress') renderProgressView();
+    lucide.createIcons();
+  }
+
+  function applyPreset(preset, loadQ = true) {
+    state.preset = preset;
+    if (preset === 'all') state.selectedTenses = TENSES.map(t => t.id);
+    else if (preset === 'present') state.selectedTenses = TENSES.filter(t => t.group === 'present').map(t => t.id);
+    else if (preset === 'past') state.selectedTenses = TENSES.filter(t => t.group === 'past').map(t => t.id);
+    else if (preset === 'future') state.selectedTenses = TENSES.filter(t => t.group === 'future').map(t => t.id);
+    else if (preset === 'simple') state.selectedTenses = TENSES.filter(t => t.aspect === 'simple').map(t => t.id);
+    else if (preset === 'continuous') state.selectedTenses = TENSES.filter(t => t.aspect === 'continuous').map(t => t.id);
+    else if (preset === 'perfect') state.selectedTenses = TENSES.filter(t => t.aspect === 'perfect').map(t => t.id);
+    else if (preset === 'perfect_cont') state.selectedTenses = TENSES.filter(t => t.aspect === 'perfect_cont').map(t => t.id);
+
+    renderPresetButtons();
+    renderCustomTenseGrid();
+    if (loadQ) loadNextQuestion();
+  }
+
+  function trainSingleTense(tenseId) {
+    state.preset = 'custom';
+    state.selectedTenses = [tenseId];
+    renderPresetButtons();
+    renderCustomTenseGrid();
+    switchTab('practice');
+    loadNextQuestion();
+    showToast(`Режим тренировки: только ${TENSE_MAP[tenseId].name}`);
+  }
+
+  function showToast(msg) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.classList.remove('hidden');
+    clearTimeout(showToast._timer);
+    showToast._timer = setTimeout(() => el.classList.add('hidden'), 2600);
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+  }
+
+  // Bind Static & Delegated Listeners
+  document.querySelectorAll('.nav-tab').forEach(btn => {
+    btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+  });
+
+  document.getElementById('preset-buttons').addEventListener('click', e => {
+    const btn = e.target.closest('.preset-btn');
+    if (!btn) return;
+    applyPreset(btn.dataset.preset);
+  });
+
+  document.getElementById('btn-toggle-custom-grid').addEventListener('click', () => {
+    state.customGridOpen = !state.customGridOpen;
+    document.getElementById('custom-tense-picker').classList.toggle('hidden', !state.customGridOpen);
+    document.getElementById('custom-grid-toggle-label').textContent = state.customGridOpen ? 'Скрыть выбор' : 'Выбрать вручную';
+    renderCustomTenseGrid();
+  });
+
+  document.getElementById('custom-tense-grid').addEventListener('click', e => {
+    const btn = e.target.closest('[data-toggle-tense]');
+    if (!btn) return;
+    const id = btn.dataset.toggleTense;
+    if (state.selectedTenses.includes(id)) {
+      if (state.selectedTenses.length === 1) {
+        showToast('Нужно оставить хотя бы одно время');
+        return;
+      }
+      state.selectedTenses = state.selectedTenses.filter(x => x !== id);
+    } else {
+      state.selectedTenses = [...state.selectedTenses, id];
+    }
+    state.preset = state.selectedTenses.length === 12 ? 'all' : 'custom';
+    renderPresetButtons();
+    renderCustomTenseGrid();
+    loadNextQuestion();
+  });
+
+  document.getElementById('btn-select-all-tenses').addEventListener('click', () => applyPreset('all'));
+  document.getElementById('btn-select-one-hint').addEventListener('click', () => trainSingleTense('pres_simple'));
+
+  document.getElementById('filter-form-group').addEventListener('click', e => {
+    const btn = e.target.closest('.filter-form-btn');
+    if (!btn) return;
+    state.formFilter = btn.dataset.form;
+    renderSecondaryFilters();
+    loadNextQuestion();
+  });
+
+  document.getElementById('filter-subj-group').addEventListener('click', e => {
+    const btn = e.target.closest('.filter-subj-btn');
+    if (!btn) return;
+    state.subjFilter = btn.dataset.subj;
+    renderSecondaryFilters();
+    loadNextQuestion();
+  });
+
+  document.getElementById('filter-mode-group').addEventListener('click', e => {
+    const btn = e.target.closest('.filter-mode-btn');
+    if (!btn) return;
+    state.inputMode = btn.dataset.mode;
+    renderSecondaryFilters();
+    loadNextQuestion();
+  });
+
+  // Multiple Choice click
+  document.getElementById('mc-container').addEventListener('click', e => {
+    const btn = e.target.closest('button[data-opt-idx]');
+    if (!btn || state.answered) return;
+    const opt = state.currentQuestion.options[Number(btn.dataset.optIdx)];
+    handleAnswer(opt.isCorrect, opt.text, opt.reason);
+  });
+
+  // Typed submit
+  function submitTypedAnswer() {
+    if (state.answered) return;
+    const inp = document.getElementById('type-input');
+    const val = inp.value.trim();
+    if (!val) {
+      inp.focus();
+      return;
+    }
+    const q = state.currentQuestion;
+    const norm = normalizeAns(val);
+    const validSet = [q.correct, ...(q.alts || [])].map(normalizeAns);
+    const isCorrect = validSet.includes(norm);
+    handleAnswer(isCorrect, val, null);
+  }
+
+  document.getElementById('btn-submit-type').addEventListener('click', submitTypedAnswer);
+  document.getElementById('type-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      e.stopPropagation();
+      if (!state.answered) submitTypedAnswer();
+      else loadNextQuestion();
+    }
+  });
+
+  // Hint, Skip, Next, Open Rule
+  document.getElementById('btn-show-hint').addEventListener('click', () => {
+    const q = state.currentQuestion;
+    if (!q) return;
+    const t = TENSE_MAP[q.tenseId];
+    const formRule = t.formulas[q.form].map(f => `${f.subj}: ${f.form}`).join(' | ');
+    document.getElementById('q-hint-text').innerHTML = `
+      <strong>Время:</strong> ${t.name}. <strong>Маркер:</strong> «${q.marker}».<br/>
+      <strong>Формула:</strong> <span class="font-mono text-xs">${formRule}</span>
+    `;
+    document.getElementById('q-hint-box').classList.remove('hidden');
+  });
+
+  document.getElementById('btn-skip-question').addEventListener('click', loadNextQuestion);
+  document.getElementById('btn-next-question').addEventListener('click', loadNextQuestion);
+
+  document.getElementById('btn-open-tense-theory').addEventListener('click', () => {
+    if (!state.currentQuestion) return;
+    state.activeTheoryTense = state.currentQuestion.tenseId;
+    switchTab('theory');
+  });
+
+  // Theory delegation
+  document.getElementById('theory-matrix').addEventListener('click', e => {
+    const btn = e.target.closest('[data-theory-tense]');
+    if (!btn) return;
+    state.activeTheoryTense = btn.dataset.theoryTense;
+    renderTheoryView();
+  });
+
+  document.getElementById('theory-detail-card').addEventListener('click', e => {
+    const btn = e.target.closest('[data-train-tense]');
+    if (!btn) return;
+    trainSingleTense(btn.dataset.trainTense);
+  });
+
+  // Progress delegation
+  document.getElementById('prog-tense-grid').addEventListener('click', e => {
+    const btn = e.target.closest('[data-drill-tense]');
+    if (!btn) return;
+    trainSingleTense(btn.dataset.drillTense);
+  });
+
+  document.getElementById('mistakes-list').addEventListener('click', e => {
+    const btn = e.target.closest('[data-goto-theory]');
+    if (!btn) return;
+    state.activeTheoryTense = btn.dataset.gotoTheory;
+    switchTab('theory');
+  });
+
+  document.getElementById('btn-practice-mistakes').addEventListener('click', () => {
+    switchTab('practice');
+    applyPreset('mistakes');
+  });
+
+  // Reset Modal
+  document.getElementById('btn-open-reset-modal').addEventListener('click', () => {
+    document.getElementById('reset-modal').classList.remove('hidden');
+  });
+  document.getElementById('btn-cancel-reset').addEventListener('click', () => {
+    document.getElementById('reset-modal').classList.add('hidden');
+  });
+  document.getElementById('btn-confirm-reset').addEventListener('click', () => {
+    state.data = structuredCloneSafe(DEFAULT_PERSISTED);
+    savePersisted();
+    document.getElementById('reset-modal').classList.add('hidden');
+    renderStatsBar();
+    renderPresetButtons();
+    renderProgressView();
+    showToast('Прогресс очищен');
+  });
+
+  // Global keyboard shortcuts for Practice tab
+  document.addEventListener('keydown', e => {
+    if (state.tab !== 'practice') return;
+    if (document.activeElement && document.activeElement.id === 'type-input') return;
+
+    if (!state.answered && state.currentQuestion?.renderMode === 'mc') {
+      const num = Number(e.key);
+      if (num >= 1 && num <= 4) {
+        const opt = state.currentQuestion.options[num - 1];
+        if (opt) handleAnswer(opt.isCorrect, opt.text, opt.reason);
+      }
+    } else if (state.answered && e.key === 'Enter') {
+      e.preventDefault();
+      loadNextQuestion();
+    }
+  });
+
+  /* ============================================================================
+     9.5 THEME TOGGLE (DARK BY DEFAULT)
+     ============================================================================ */
+  const THEME_KEY = 'tenselab_theme_v1';
+
+  function applyTheme(theme) {
+    const isDark = theme === 'dark';
+    document.documentElement.classList.toggle('dark', isDark);
+    const sunEl = document.getElementById('theme-icon-sun');
+    const moonEl = document.getElementById('theme-icon-moon');
+    if (sunEl && moonEl) {
+      sunEl.classList.toggle('hidden', !isDark);
+      moonEl.classList.toggle('hidden', isDark);
+    }
+    try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+  }
+
+  function initTheme() {
+    let saved = 'dark';
+    try {
+      const t = localStorage.getItem(THEME_KEY);
+      if (t === 'light' || t === 'dark') saved = t;
+    } catch (e) {}
+    applyTheme(saved);
+  }
+
+  document.getElementById('btn-toggle-theme').addEventListener('click', () => {
+    const isCurrentlyDark = document.documentElement.classList.contains('dark');
+    applyTheme(isCurrentlyDark ? 'light' : 'dark');
+  });
+
+  /* ============================================================================
+     10. INIT
+     ============================================================================ */
+  initTheme();
+  renderPresetButtons();
+  renderSecondaryFilters();
+  renderStatsBar();
+  loadNextQuestion();
+  lucide.createIcons();
+})();
+</script>
+</body>
+</html>
